@@ -1,0 +1,2284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0a08">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<title>팔자 한 그릇 · 사주 할마카세</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="팔자 한 그릇 · 사주 할마카세">
+<meta property="og:description" content="조선의 욕쟁이 할머니가 여덟 글자를 다섯 코스로 차려주는 개인용 사주 풀이">
+<meta property="og:url" content="https://allee1010.github.io/halmakase-saju/">
+<style>
+/* ============================================================
+   팔자 한 그릇 — 조선의 욕쟁이 할머니가 차려주는 여덟 글자
+   ============================================================ */
+:root{
+  --ink:#0b0a08;
+  --ink-2:#12100d;
+  --ink-3:#1a1712;
+  --paper:#f4ecdc;
+  --paper-2:#ded2ba;
+  --muted:#9a8f7c;
+  --gold:#c9a227;
+  --gold-2:#e6c766;
+  --gold-dim:rgba(201,162,39,.22);
+  --verm:#cf5b3d;
+  --jade:#6f9e86;
+  --line:rgba(201,162,39,.20);
+  --serif:"AppleMyungjo","Nanum Myeongjo","Noto Serif KR","Noto Serif CJK KR","Source Han Serif K","Songti SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Noto Sans CJK KR","Malgun Gothic","Helvetica Neue",sans-serif;
+  --nav-h:64px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.75;
+  letter-spacing:-0.01em;
+  overflow-x:hidden;
+  min-height:100vh;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(201,162,39,.10), transparent 55%),
+    radial-gradient(90% 60% at 100% 105%, rgba(207,91,61,.09), transparent 60%),
+    radial-gradient(70% 50% at 0% 40%, rgba(111,158,134,.05), transparent 60%);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.9'/></svg>");
+  mix-blend-mode:overlay;
+}
+.app{position:relative;z-index:1;max-width:600px;margin:0 auto}
+
+/* ---------- 공통 ---------- */
+.han{font-family:var(--serif)}
+.serif{font-family:var(--serif)}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:none;cursor:pointer}
+textarea,input,select{font-family:inherit;font-size:16px;color:var(--paper)}
+.hidden{display:none!important}
+.screen{animation:fadeUp .5s ease both}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- 인트로(문) ---------- */
+#gate{
+  position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(80% 60% at 50% 40%,#191510 0%,#0b0a08 70%);
+  padding:0 28px calc(28px + env(safe-area-inset-bottom));
+  text-align:center;transition:opacity .55s ease, visibility .55s;
+}
+#gate.gone{opacity:0;visibility:hidden;pointer-events:none}
+.gate-inner{max-width:420px}
+.gate-seal{width:92px;height:92px;margin:0 auto 30px;border:1px solid var(--gold-dim);border-radius:50%;display:grid;place-items:center;position:relative}
+.gate-seal::before{content:"";position:absolute;inset:6px;border:1px solid rgba(201,162,39,.12);border-radius:50%}
+.gate-seal span{font-family:var(--serif);font-size:30px;color:var(--gold);letter-spacing:2px;padding-left:3px}
+.gate-title{font-family:var(--serif);font-size:34px;letter-spacing:.16em;margin:0 0 6px;color:var(--paper);font-weight:400}
+.gate-sub{font-size:13px;color:var(--muted);letter-spacing:.24em;margin:0 0 34px}
+.gate-quote{font-family:var(--serif);font-size:15.5px;line-height:2;color:var(--paper-2);margin:0 0 40px;word-break:keep-all}
+.gate-quote b{color:var(--gold-2);font-weight:400}
+.gate-btn{
+  display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border:1px solid var(--gold-dim);border-radius:2px;
+  color:var(--gold-2);letter-spacing:.2em;font-size:14px;min-height:54px;background:rgba(201,162,39,.05);
+  transition:background .3s,border-color .3s;
+}
+.gate-btn:active{background:rgba(201,162,39,.14)}
+.gate-ember{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);font-size:11px;color:#5c5344;letter-spacing:.2em}
+
+/* ---------- 입력 화면 ---------- */
+.form-head{padding:calc(46px + env(safe-area-inset-top)) 24px 8px;text-align:center}
+.brand{font-family:var(--serif);font-size:11.5px;letter-spacing:.3em;color:var(--gold);margin:0 0 16px}
+.form-title{font-family:var(--serif);font-size:29px;line-height:1.5;margin:0 0 12px;font-weight:400;letter-spacing:.02em;word-break:keep-all}
+.form-title em{font-style:normal;color:var(--gold-2)}
+.form-desc{font-size:13.5px;color:var(--muted);margin:0 auto;max-width:330px;line-height:1.9;word-break:keep-all}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);margin:26px 24px}
+form{padding:0 22px calc(120px + env(safe-area-inset-bottom))}
+.field{margin:0 0 26px}
+.field > label,.field-label{display:block;font-size:11.5px;letter-spacing:.22em;color:var(--gold);margin-bottom:10px}
+.field > label .opt{color:#6b6353;letter-spacing:.02em;font-weight:400}
+.field-label .opt{color:#675f50;letter-spacing:.05em;margin-left:6px;font-size:11px}
+.text-in{
+  width:100%;padding:12px 2px;background:transparent;border:none;border-bottom:1px solid rgba(244,236,220,.16);
+  border-radius:0;outline:none;font-size:17px;transition:border-color .25s;
+}
+.text-in::placeholder{color:#5f5748;font-size:15px}
+.text-in:focus{border-bottom-color:var(--gold)}
+.seg{display:flex;border:1px solid rgba(244,236,220,.14);border-radius:2px;overflow:hidden}
+.seg button{
+  flex:1;padding:13px 6px;font-size:14.5px;color:var(--paper-2);letter-spacing:.06em;min-height:48px;
+  background:transparent;transition:background .25s,color .25s;
+}
+.seg button+button{border-left:1px solid rgba(244,236,220,.1)}
+.seg button.on{background:rgba(201,162,39,.14);color:var(--gold-2)}
+.date-row{display:flex;gap:8px}
+.date-row .text-in{text-align:center;border:1px solid rgba(244,236,220,.14);padding:14px 4px;border-radius:2px}
+.date-row .text-in:focus{border-color:var(--gold)}
+.date-row .y{flex:1.5}
+.date-row .m,.date-row .d{flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  padding:10px 14px;border:1px solid rgba(244,236,220,.13);border-radius:2px;font-size:13.5px;color:var(--paper-2);
+  min-height:44px;display:inline-flex;align-items:center;gap:6px;transition:all .2s;background:rgba(255,255,255,.012);
+}
+.chip small{color:#6c6454;font-size:11px;letter-spacing:0}
+.chip.on{border-color:var(--gold-dim);background:rgba(201,162,39,.13);color:var(--gold-2)}
+.chip.on small{color:rgba(230,199,102,.6)}
+.chips.mbti .chip{width:calc(25% - 6px);justify-content:center;padding:10px 4px;font-size:12.5px;letter-spacing:.02em}
+.chips.hours{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.chips.hours .chip{flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:7px 2px;font-size:13.5px;letter-spacing:.04em;min-height:50px}
+.chips.hours .chip small{font-size:9.5px;letter-spacing:0;color:#6a6252}
+.chips.hours .chip.on small{color:rgba(230,199,102,.55)}
+.hint{font-size:12px;color:#6b6353;margin:10px 0 0;line-height:1.7}
+.err{color:var(--verm);font-size:12.5px;margin:8px 0 0}
+.submit{
+  width:100%;margin-top:6px;padding:19px;border:1px solid var(--gold-dim);color:var(--gold-2);
+  font-family:var(--serif);font-size:17px;letter-spacing:.16em;border-radius:2px;background:rgba(201,162,39,.07);
+  min-height:58px;transition:background .25s,transform .12s;
+}
+.submit:active{transform:scale(.985);background:rgba(201,162,39,.16)}
+.form-foot{text-align:center;font-size:11px;color:#57503f;margin-top:18px;line-height:1.8;letter-spacing:.02em}
+
+/* ---------- 보고서 ---------- */
+#report{padding-bottom:calc(var(--nav-h) + 26px + env(safe-area-inset-bottom))}
+.report-head{padding:calc(52px + env(safe-area-inset-top)) 24px 30px;text-align:center;position:relative}
+.report-head .brand{margin-bottom:12px}
+.who{font-family:var(--serif);font-size:25px;line-height:1.55;margin:0 0 14px;word-break:keep-all}
+.who span{color:var(--gold-2)}
+.meta-line{font-size:12px;color:var(--muted);letter-spacing:.08em;line-height:1.9}
+.meta-line b{color:var(--paper-2);font-weight:400}
+.scroll-cue{margin-top:26px;font-size:11px;color:#5c5445;letter-spacing:.24em;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.55}50%{transform:translateY(6px);opacity:1}}
+
+.chapter{
+  padding:54px 24px 20px;border-top:1px solid rgba(244,236,220,.06);position:relative;
+  opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease;
+}
+.chapter.in{opacity:1;transform:none}
+.chapter-no{
+  font-family:var(--serif);font-size:11px;letter-spacing:.36em;color:var(--gold);margin:0 0 14px;
+  display:flex;align-items:center;gap:12px;
+}
+.chapter-no::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent)}
+.chapter h2{
+  font-family:var(--serif);font-size:23px;line-height:1.55;font-weight:400;margin:0 0 8px;letter-spacing:.01em;word-break:keep-all;
+}
+.chapter .kicker{font-size:13px;color:var(--muted);line-height:1.85;margin:0 0 26px;word-break:keep-all}
+.lead{font-family:var(--serif);font-size:16.5px;line-height:2.05;color:var(--paper);margin:0 0 20px;word-break:keep-all}
+.lead b{color:var(--gold-2);font-weight:400}
+p.body{font-size:15px;line-height:2.05;color:#d9cfbb;margin:0 0 18px;word-break:keep-all}
+p.body b{color:var(--paper);font-weight:600}
+p.body em{font-style:normal;color:var(--gold-2)}
+
+/* 명식 표 */
+.chart{margin:6px 0 26px;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:rgba(255,255,255,.012)}
+.chart-row{display:grid;grid-template-columns:52px repeat(4,1fr)}
+.chart-row > div{padding:9px 4px;text-align:center;border-right:1px solid rgba(244,236,220,.06);border-bottom:1px solid rgba(244,236,220,.06)}
+.chart-row > div:last-child{border-right:none}
+.chart-row:last-child > div{border-bottom:none}
+.chart-row .rh{font-size:10.5px;color:var(--muted);letter-spacing:.1em;display:flex;align-items:center;justify-content:center}
+.chart-row .col-head{font-size:11px;letter-spacing:.14em;color:#8b8271;padding:11px 4px}
+.chart .gz{font-family:var(--serif);font-size:27px;line-height:1.15;padding:6px 2px}
+.chart .gz small{display:block;font-family:var(--sans);font-size:10.5px;color:#857b69;letter-spacing:.06em;margin-top:3px}
+.chart .stem-row div{color:var(--paper)}
+.chart .branch-row div{color:var(--paper-2)}
+.chart .day-col{background:rgba(201,162,39,.07)}
+.chart .day-col .gz{color:var(--gold-2)}
+.chart .el{font-size:10.5px;color:#8a8070;letter-spacing:.05em}
+.chart-note{font-size:11.5px;color:#7a7160;line-height:1.85;margin:-14px 0 26px;word-break:keep-all}
+.chart-note.tight{margin:12px 0 26px}
+
+/* 오행 */
+.el-block{margin:0 0 24px}
+.el-row{display:grid;grid-template-columns:34px 1fr 62px;align-items:center;gap:10px;margin-bottom:9px}
+.el-name{font-family:var(--serif);font-size:15px;color:var(--paper-2)}
+.el-name small{font-size:10px;color:#6f6656;margin-left:2px}
+.el-track{height:6px;background:rgba(244,236,220,.07);border-radius:3px;overflow:hidden}
+.el-fill{height:100%;border-radius:3px;width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.el-val{font-size:12px;color:var(--muted);text-align:right;letter-spacing:.04em}
+.el-legend{display:flex;justify-content:space-between;font-size:11px;color:#6c6454;margin-top:6px;letter-spacing:.06em}
+
+/* 십신 칩 */
+.ten-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:4px 0 8px}
+.ten-cell{border:1px solid rgba(244,236,220,.09);border-radius:2px;padding:9px 2px;text-align:center;background:rgba(255,255,255,.012)}
+.ten-cell .n{font-size:11.5px;color:#a59a86;display:block;letter-spacing:.02em}
+.ten-cell .v{font-family:var(--serif);font-size:15px;color:var(--paper);display:block;margin-top:2px}
+.ten-cell.hot{border-color:var(--gold-dim);background:rgba(201,162,39,.1)}
+.ten-cell.hot .n{color:var(--gold-2)}
+.ten-cell.hot .v{color:var(--gold-2)}
+.ten-cell.zero .v{color:#4e4739}
+
+.sw{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:-2px;margin-right:7px;border:1px solid rgba(255,255,255,.18)}
+
+/* 게이지 */
+.gauge-wrap{margin:10px 0 26px}
+.gauge-top{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;color:var(--muted);letter-spacing:.06em;margin-bottom:8px}
+.gauge-top b{font-family:var(--serif);font-size:26px;color:var(--gold-2);font-weight:400;letter-spacing:0}
+.gauge{height:10px;border-radius:5px;background:rgba(244,236,220,.07);overflow:hidden;position:relative}
+.gauge-fill{height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,#8a7327,var(--gold-2));transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.gauge-scale{display:flex;justify-content:space-between;font-size:10px;color:#5f5748;margin-top:6px;letter-spacing:.1em}
+
+/* 박스 */
+.note{
+  border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:2px;
+  padding:16px 16px 14px;margin:0 0 22px;background:linear-gradient(180deg,rgba(201,162,39,.06),rgba(201,162,39,.015));
+}
+.note h4{margin:0 0 9px;font-family:var(--serif);font-size:13.5px;line-height:1.6;color:var(--gold-2);font-weight:400;letter-spacing:.03em;word-break:keep-all}
+.note p{margin:0;font-size:14px;line-height:1.95;color:#d4cab6;word-break:keep-all}
+.note.warn{border-left-color:var(--verm);background:linear-gradient(180deg,rgba(207,91,61,.08),rgba(207,91,61,.02))}
+.note.warn h4{color:#e08b6f}
+.note.warm{border-left-color:var(--jade);background:linear-gradient(180deg,rgba(111,158,134,.07),rgba(111,158,134,.015))}
+.note.warm h4{color:#a7c9b8}
+
+/* 대운 타임라인 */
+.dw-scroll{display:flex;gap:10px;overflow-x:auto;padding:4px 0 16px;margin:0 -24px;padding-left:24px;padding-right:24px;scrollbar-width:none}
+.dw-scroll::-webkit-scrollbar{display:none}
+.dw-card{
+  flex:0 0 132px;border:1px solid rgba(244,236,220,.1);border-radius:3px;padding:14px 12px 12px;
+  background:rgba(255,255,255,.014);position:relative;
+}
+.dw-card.now{border-color:var(--gold);background:linear-gradient(180deg,rgba(201,162,39,.14),rgba(201,162,39,.03));box-shadow:0 0 0 1px rgba(201,162,39,.1) inset}
+.dw-card .age{font-size:10.5px;color:#7d7464;letter-spacing:.08em}
+.dw-card .gj{font-family:var(--serif);font-size:24px;color:var(--paper);margin:8px 0 2px;letter-spacing:.04em}
+.dw-card.now .gj{color:var(--gold-2)}
+.dw-card .tg{font-size:11.5px;color:var(--muted);letter-spacing:.04em}
+.dw-card .bar{height:2px;background:rgba(244,236,220,.08);margin:11px 0 9px;border-radius:1px;overflow:hidden}
+.dw-card .bar i{display:block;height:100%;background:rgba(201,162,39,.5);width:0;transition:width 1s ease .2s}
+.dw-card.now .bar i{background:var(--gold-2)}
+.dw-card .txt{font-size:11.5px;color:#b3a894;line-height:1.65;word-break:keep-all}
+.dw-card.now .txt{color:#e8dcc0}
+
+/* 오늘/올해 */
+.duo{display:grid;grid-template-columns:1fr;gap:12px;margin:0 0 22px}
+.wx{display:flex;align-items:center;gap:14px;border:1px solid rgba(244,236,220,.09);border-radius:3px;padding:14px 16px;background:rgba(255,255,255,.012)}
+.wx .g{font-family:var(--serif);font-size:22px;color:var(--gold-2);min-width:56px}
+.wx .t{font-size:13px;line-height:1.7;color:#cfc4ae;word-break:keep-all}
+.wx .t small{display:block;font-size:10.5px;color:#7b7261;letter-spacing:.12em;margin-bottom:3px}
+
+/* 보고서 끝 */
+.end-card{margin:34px 24px 0;border:1px solid var(--line);border-radius:3px;padding:26px 22px;text-align:center;background:linear-gradient(180deg,rgba(201,162,39,.07),transparent)}
+.end-card .seal{font-family:var(--serif);font-size:30px;color:var(--verm);letter-spacing:.1em;margin-bottom:14px}
+.end-card p{font-family:var(--serif);font-size:15px;line-height:2;color:var(--paper-2);margin:0 0 20px;word-break:keep-all}
+.end-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.end-actions .btn-s{flex:1 1 calc(50% - 8px);min-width:0}
+.end-actions .btn-s:last-child{flex:1 1 100%}
+.btn-s{padding:12px 18px;border:1px solid rgba(244,236,220,.16);border-radius:2px;font-size:13px;color:var(--paper-2);letter-spacing:.06em;min-height:46px}
+.btn-s.on,.btn-s:active{border-color:var(--gold-dim);color:var(--gold-2);background:rgba(201,162,39,.1)}
+
+/* ---------- 하단 내비 ---------- */
+.nav{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;
+  height:calc(var(--nav-h) + env(safe-area-inset-bottom));
+  padding-bottom:env(safe-area-inset-bottom);
+  display:grid;grid-template-columns:1.35fr 1fr 1fr 1.2fr;
+  background:rgba(11,10,8,.92);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid rgba(244,236,220,.08);
+}
+.nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10.5px;letter-spacing:.1em;color:#8d8371;min-height:var(--nav-h)}
+.nav button .ic{font-size:15px;line-height:1;color:#a99d87}
+.nav button:active{color:var(--gold-2)}
+.nav button:disabled{opacity:.3}
+.nav .toc{color:var(--gold-2)}
+.nav .toc .ic{color:var(--gold)}
+
+/* ---------- 서랍 ---------- */
+.scrim{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.6);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;backdrop-filter:blur(2px)}
+.scrim.on{opacity:1;visibility:visible}
+.sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:41;max-height:82vh;overflow-y:auto;
+  background:#100e0b;border-top:1px solid var(--gold-dim);
+  border-radius:14px 14px 0 0;padding:10px 0 calc(18px + env(safe-area-inset-bottom));
+  transform:translateY(102%);transition:transform .38s cubic-bezier(.2,.8,.2,1);
+  -webkit-overflow-scrolling:touch;
+}
+.sheet.on{transform:none}
+.sheet-grip{width:38px;height:3px;border-radius:2px;background:rgba(244,236,220,.18);margin:6px auto 14px}
+.sheet h3{font-family:var(--serif);font-size:15px;letter-spacing:.14em;color:var(--gold-2);margin:0 22px 6px;font-weight:400}
+.sheet .sub{font-size:11.5px;color:#7d7464;margin:0 22px 14px;letter-spacing:.04em}
+.toc-list{list-style:none;margin:0;padding:0}
+.toc-list li{border-top:1px solid rgba(244,236,220,.06)}
+.toc-list button{display:flex;width:100%;align-items:center;gap:14px;padding:15px 22px;text-align:left;min-height:56px}
+.toc-list .n{font-family:var(--serif);font-size:12px;color:var(--gold);letter-spacing:.1em;min-width:22px}
+.toc-list .t{font-size:14.5px;color:var(--paper-2);flex:1;line-height:1.5}
+.toc-list .c{font-size:10.5px;color:#6b6353;letter-spacing:.06em}
+.toc-list button.cur .t{color:var(--gold-2)}
+.sheet-tools{display:flex;gap:8px;padding:16px 22px 4px;flex-wrap:wrap}
+.sheet-tools .btn-s{flex:1;text-align:center;justify-content:center}
+
+/* 보관함 */
+.vault-list{list-style:none;margin:0;padding:0 14px}
+.vault-item{border:1px solid rgba(244,236,220,.08);border-radius:3px;margin:0 0 9px;padding:13px 14px;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.012)}
+.vault-item .vi-main{flex:1;min-width:0}
+.vault-item .vi-name{font-size:14.5px;color:var(--paper);font-family:var(--serif);letter-spacing:.04em}
+.vault-item .vi-meta{font-size:11px;color:#7d7464;margin-top:3px;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vault-item .vi-del{font-size:11px;color:#8a6b60;padding:8px;letter-spacing:.06em}
+.vault-empty{text-align:center;color:#6b6353;font-size:13px;padding:30px 24px 34px;line-height:1.9}
+
+/* 토스트 */
+.toast{
+  position:fixed;left:50%;bottom:calc(var(--nav-h) + 22px + env(safe-area-inset-bottom));transform:translate(-50%,14px);
+  background:rgba(26,22,17,.97);border:1px solid var(--gold-dim);color:var(--gold-2);
+  padding:11px 20px;border-radius:2px;font-size:13px;letter-spacing:.04em;z-index:70;
+  opacity:0;visibility:hidden;transition:all .3s;white-space:nowrap;max-width:88vw;overflow:hidden;text-overflow:ellipsis;
+}
+.toast.on{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+/* 인쇄/큰 화면 */
+@media (min-width:640px){
+  body{font-size:16.5px}
+  .chapter{padding:62px 34px 24px}
+  .form-head{padding-top:64px}
+  .dw-scroll{margin:0 -34px;padding-left:34px;padding-right:34px}
+  .end-card{margin:38px 34px 0}
+}
+</style>
+</head>
+<body>
+<!-- ================= 인트로 ================= -->
+<div id="gate">
+  <div class="gate-inner">
+    <div class="gate-seal"><span>命</span></div>
+    <h1 class="gate-title">팔자 한 그릇</h1>
+    <p class="gate-sub">八字 · 사주 할마카세</p>
+    <p class="gate-quote">
+      “점쟁이한테 듣고 싶은 말만 들으러 왔나?<br>
+      그럼 여기서 돌아가라.<br>
+      <b>할미는 쓴소리까지 차려주는 집이다.</b>”
+    </p>
+    <button class="gate-btn" id="enterBtn">문 두드리기 <span>›</span></button>
+  </div>
+  <div class="gate-ember">밤에 보면 더 좋은 이야기</div>
+</div>
+
+<div class="app">
+
+  <!-- ================= 입력 ================= -->
+  <div id="formScreen" class="screen">
+    <div class="form-head">
+      <p class="brand">팔자 한 그릇 · 命</p>
+      <h2 class="form-title">여덟 글자 좀<br><em>펴보자꾸나</em></h2>
+      <p class="form-desc">태어난 날과 시만 알려주면, 할미가 평생 쓸 이야기를 다섯 코스로 차려준다.</p>
+    </div>
+    <div class="rule"></div>
+    <form id="sajuForm" novalidate>
+      <div class="field">
+        <label for="fName">이름 <span class="opt">(안 써도 된다)</span></label>
+        <input type="text" id="fName" class="text-in" placeholder="부르고 싶은 이름" autocomplete="name" maxlength="24">
+      </div>
+
+      <div class="field">
+        <span class="field-label">달력 <span class="opt">양력이 기본이다</span></span>
+        <div class="seg" id="segCal">
+          <button type="button" data-v="solar" class="on">양력</button>
+          <button type="button" data-v="lunar">음력</button>
+        </div>
+        <div class="seg hidden" id="segLeap" style="margin-top:8px">
+          <button type="button" data-v="0" class="on">평달</button>
+          <button type="button" data-v="1">윤달</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="fYear">생년월일 <span class="opt">(1900 ~ 2050)</span></label>
+        <div class="date-row">
+          <input type="number" id="fYear" class="text-in y" inputmode="numeric" placeholder="년" min="1900" max="2050">
+          <input type="number" id="fMonth" class="text-in m" inputmode="numeric" placeholder="월" min="1" max="12">
+          <input type="number" id="fDay" class="text-in d" inputmode="numeric" placeholder="일" min="1" max="31">
+        </div>
+        <p class="err hidden" id="dateErr"></p>
+      </div>
+
+      <div class="field">
+        <span class="field-label">태어난 시간 <span class="opt">시진으로 대충 고르면 된다</span></span>
+        <div class="chips hours" id="hourChips"></div>
+        <p class="hint" id="hourHint">태어난 시간을 모르면 시주 없이 여섯 글자로 본다. 대신 속마음은 조금 덜 보인다.</p>
+      </div>
+
+      <div class="field">
+        <span class="field-label">성별</span>
+        <div class="seg" id="segGender">
+          <button type="button" data-v="F" class="on">여성</button>
+          <button type="button" data-v="M">남성</button>
+        </div>
+        <p class="hint">대운이 앞으로 흐르냐 뒤로 흐르냐를 가르는 데 쓴다.</p>
+      </div>
+
+      <div class="field">
+        <span class="field-label">MBTI <span class="opt">(선택 · 안다면)</span></span>
+        <div class="chips mbti" id="mbtiChips"></div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">요즘 제일 답답한 것 <span class="opt">(하나만)</span></span>
+        <div class="chips" id="qChips"></div>
+        <textarea id="fQuestion" class="text-in" rows="2" maxlength="160" placeholder="하고 싶은 말이 있으면 두어 줄 적어라 (선택)" style="margin-top:12px;resize:none;line-height:1.7"></textarea>
+      </div>
+
+      <button type="submit" class="submit" id="goBtn">할미 앞에 앉기</button>
+      <p class="form-foot">재미로 보는 사주다. 인생의 큰일은 네가 정하고, 할미는 옆에서 재촉만 하마.<br>입력한 것은 이 기기 밖으로 한 글자도 나가지 않는다.</p>
+    </form>
+  </div>
+
+  <!-- ================= 보고서 ================= -->
+  <div id="report" class="hidden">
+    <div class="report-head" id="reportHead"></div>
+    <div id="chapters"></div>
+    <div class="end-card" id="endCard"></div>
+  </div>
+
+</div>
+
+<!-- ================= 하단 내비 ================= -->
+<nav class="nav hidden" id="nav">
+  <button id="navToc"><span class="ic">☰</span><span>목차</span></button>
+  <button id="navPrev"><span class="ic">‹</span><span>앞</span></button>
+  <button id="navNext"><span class="ic">›</span><span>뒤</span></button>
+  <button id="navSave"><span class="ic">❖</span><span>저장</span></button>
+</nav>
+
+<div class="scrim" id="scrim"></div>
+
+<!-- 목차 -->
+<div class="sheet" id="tocSheet" role="dialog" aria-label="목차">
+  <div class="sheet-grip"></div>
+  <h3>이야기 목차</h3>
+  <p class="sub" id="tocSub">다섯 코스, 천천히 먹어라</p>
+  <ul class="toc-list" id="tocList"></ul>
+  <div class="sheet-tools">
+    <button class="btn-s" id="tocVault">❖ 보관함</button>
+    <button class="btn-s" id="tocNew">↺ 새로 보기</button>
+  </div>
+</div>
+
+<!-- 보관함 -->
+<div class="sheet" id="vaultSheet" role="dialog" aria-label="보관함">
+  <div class="sheet-grip"></div>
+  <h3>보관함</h3>
+  <p class="sub">이 기기에만 저장된다 · 최대 60개</p>
+  <ul class="vault-list" id="vaultList"></ul>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ==== Embeddable calendar data (generated) ==== */
+/* SOLAR_TERMS: 152 years from 1899; per year 24 terms in order
+   [소한,대한,입춘,우수,경칩,춘분,청명,곡우,입하,소만,망종,하지,소서,대서,입추,처서,백로,추분,한로,상강,입동,소설,대설,동지]
+   each term = 4 base36 digits = minutes after Jan 1 00:00 KST */
+var TERM_START_YEAR = 1899;
+var TERM_DATA = (function(){
+  var s = '05fh0lse12771iok1za22fzy2wv93dvl3v1a4cbb4tp55b5a5sml6a3j6rio78us7q2o875u8o3k94w79ljna231aiitaywk05p40m2812gs1iyd1zjm2g9r2x4t3e5f3vav4cl54tyr5bf45swa6adc6rsf794k7qch87fk8odd955v9ltga2coaiskaz6605yt0mbs12qg1j7x1ztb2gjc2xek3ef13vkq4cut4u8o5bos5t686an06s2a79e77qma87p98on695fm9m3aa2mhaj2hazg1068s0mlo130e1jhs20382gt52xod3eos3vuf4d4i4ui85byf5tfm6awm6sbm79nt7qvm87yv8owl95pc9mcua2wbajc5azq006ik0mvq13a71jrt20cz2h332xy23eyn3w414de94urv5c855tpd6b6b6slg79xi7r5i888k8p6i95yz9mmpa35xajlzazzk06sd0n5a13k01k1d20ms2hcn2y7v3f863wdv4dnt4v1p5chr5tz86bg26svc7a7c7rfe88ig8pgc968v9mwha3fsajvpb09e05y30mb412ps1j791zsm2gim2xdq3ee83vjq4ctv4u7i5bnr5t4w6aly6s0x79d57qky87o68olw95ek9m22a2lhaj1bazf4067p0mkv12zg1jh2202c2gsh2xnj3eo33vtk4d3p4uhd5bxi5ter6avl6sas79mq7qus87xr8ovr95o79mbza2v6ajb9azot06hn0muj139b1jqm20c32h1x2xx73exh3w364dd34uqx5c6z5tob6b566skc79wf7r4e887l8p5f95y49mloa354ajkzazys06rd0n4g13iz1k0i20lq2hbr2y6s3f7b3wcq4dmy4v0j5cgv5ty06bf26su37a697re488ha8pf3967p9mvaa3enajukb08905wx0m9z12ol1j621zrd2ghd2xch3ecy3vij4csl4u6e5bmi5t3w6ako6rzy79bw7qjz87mw8okv95da9m11a2k8aj0bazdw066q0mjn12yf1jfs20182gr32xmb3emm3vs74d264ufw5bw15td96au76s9979lf7qta87wj8ou995mz9maha2tzaj9tazno06g90mtf137y1jpk20ar2h0u2xvt3ewc3w1o4dbv4upe5c5n5tmt6b3t6siw79v17r3188668p4395wm9mkba33kajjkazx506pv0n2t13hi1jyw20k92ha52y5c3f5o3wbb4dl94uz35cf55twl6bde6ssp7a4p7rcu88fw8pdv966e9mu3a3dcajtbb06x05vm0m8j12n71j4k1zpx2gfu2xb03ebf3vgz4cr24u4p5bkx5t236aj46ry479ac7qi687lh8oj895bz9lzia2izaiytazcn06570mic12wt1jee1zzk2gpn2xkm3el53vqk4d0q4uec5buj5tbr6asn6s7t79ju7qrw87uy8osz95lh9m9ba2skaj8pazma06f40ms0136p1jnz209c2gz32xu93euh3w034d9y4uns5c3t5tl86b226shc79tf7r1h884o8p2l95va9miya32dajicazw406os0n1u13ge1jxu20j12h8z2y3y3f4d3w9q4dju4uxe5cdo5tuu6bbx6sqz7a387rb588ef8pc8964x9msia3byajrub05m05u90m7d12ly1j3h1zop2gep2x9q3ea53vfm4cpn4u3b5bje5t0q6ahk6rwu798u7qgz87k08oi295ak9lyda2hlaixpazba06440mh112vt1jd51zyl2goe2xjl3ejt3vpe4cz94ucz5bt05ta86ar36s6779id7qqb87tm8org95k99m7va2reaj7aazl506dr0mqx135f1jmz20852gy72xt53etn3vyy4d934uml5c2u5tjw6b0w6sfy79s47r04883b8p1995tx9mhoa311ajh2azur06nh0n0g13f21jwh20hr2h7n2y2r3f333w8n4dim4uwe5ccg5ttv6ban6spy7a1x7ra388d48pb5963p9mrha3arajqub04h05ta0m6712kw1j281znl2gdf2x8l3e8w3veg4coh4u255bic5szj6agi6rvj797r7qfm87iw8ogn959e9lwxa2ggaiwbaza7062t0mg012ui1jc41zxa2gnd2xia3eit3vo54cya4ubu5bs35t996aq86s5d79hg7qpi87sm8oql95j59m6xa2q7aj6bazjx06cq0mpn134c1jlo20702gwt2xry3es63vxq4d7l4ule5c1f5tiu6azo6sf079r47qz9882f8p0f95t39mgsa306ajg5aztt06mi0mzg13e21jvf20go2h6k2y1l3f1z3w7e4dhg4uv25cbb5tsh6b9l6soo7a107r8x88ca8pa4962w9mqha39yajptb03l05s50m5812jp1j171zmc2gcc2x7a3e7r3vd64cn94u0w5bh25syd6af96ruj796l7qes87hv8ofz958j9lwea2fnaivsaz9d06260mf012tq1jaz1zwc2gm12xh63ehc3vmw4cwq4uai5bqi5t7u6aop6s3w79g27qo487rf8opd95i69m5wa2pgaj5fazj906bx0mp0133i1jky20622gvz2xqu3er83vwh4d6k4uk15c0a5the6ayh6sdj79pt7qxt88158oz395rv9mfla2z2ajf2azsu06lj0myl13d41juj20fp2h5k2y0j3f0t3w674dg44utt5c9u5tr86b826snf79zh7r7q88at8p8y961i9mpda38oajotb02g05ra0m4612ix1j071zlk2gbb2x6f3e6m3vc44cm04tzn5bfp5sww6adt6rsx79557qd487gg8oeb95759lura2ecaiu8az85060r0mdx12sf1ja01zv52gl62xg13egi3vlr4cvu4u9a5bph5t6k6ani6s2l79eq7qms87q08oo195gq9m4ka2nyaj43azhr06ak0mnh13251jjg204q2gui2xpk3eps3vva4d534uiu5bys5tg66awx6sc979oa7qwh87zn8oxr95qf9meaa2xpajdsazri06k90mx713bt1jt420ed2h462xz63ezg3w4v4dev4usg5c8n5tps6b6u6slw79y67r63889g8p7a96049mnqa37aajn6b01205pn0m2t12h91iys1zjv2g9v2x4q3e563vai4ckl4ty55bec5svk6ach6rrq793s7qbx87f18od4955o9ltja2ctaiszaz6l05zg0mcd12r41j8e1ztq2gjg2xek3eeo3vk74ctz4u7p5bno5t506alu6s1479d87qlc87ol8oml95fc9m33a2mkaj2kazgd06920mm4130p1ji4203a2gt62xo23eoe3vto4d3p4uh65bxe5tei6avl6sao79n07qv087ye8owc95p59mcua2wbajc9azq106in0mvo13a51jrl20cp2h2m2xxj3exv3w384dd74uqv5c6y5toa6b566skj79wm7r4x88828p6895yu9mmra361ajm6azzr05ok0m1d12g21ix91zik2g892x3d3e3j3v934cix4twn5bco5sty6aav6rq1792a7qab87dp8obn954i9ls7a2bsairqaz5m05y70mbb12pr1j781zsa2gi72xd13edf3vin4csq4u675bmg5t3j6akl6rzp79by7qk087nb8old95e69m20a2liaj1mazfd06840ml312zm1jgx20222grs2xmp3emv3vs94d234ufs5bvr5td66au16s9f79lj7qtu87x18ov995ny9mbwa2vaajbhazp606i00muw139k1jqs20c02h1o2xwn3ewr3w244dbz4upk5c5o5tmw6b3y6sj379vg7r3h886y8p4u95xr9mlfa351ajkyazyv05ng0m0m12f21iwk1zhm2g7k2x2d3e2q3v7y4chz4tvf5bbl5ssr6a9q6roy79157q9c87cl8oaq953f9lrca2aqaiqwaz4k05xe0mab12p11j6b1zrl2ghb2xcc3ecf3vhv4crl4u595bl45t2g6aj76ryi79am7qiu87m48oka95d39m0za2kiaj0nazeg06770mk712ys1jg4201a2gr32xlz3em73vrh4d1f4uev5bv05tc36at46s8679kj7qsj87w08oty95mw9mana2u9aja9azo506gr0mtv138b1jpr20as2h0p2xvi3evu3w144db34uon5c4q5tm06b2w6si779ua7r2k885q8p3x95wk9mkja33vajk4azxr05mm0lzi12e71ivf1zgq2g6d2x1g3e1j3v714cgs4tuh5bag5srr6a8l6rnt78zz7q8287be8o9d95289lpya29jaipkaz3g05w40m9912ns1j581zqd2gg92xb33ebe3vgl4cqm4u415bk85t1b6aid6rxg799q7qhr87l58oj595bz9lzra2jaaizcazd5065u0miw12xe1jes1zzw2gpp2xkk3ekr3vq34czx4udj5btj5taw6arq6s7579j97qrl87ut8ot195lq9m9oa2t2aj98azmv06fo0msi13761jod209m2gz92xu93eud3vzs4d9m4un85c3b5tkj6b1j6sgq79t27r15884m8p2k95vi9mj7a32tajiqazwl05l50ly912cn1iu31zf32g502wzs3e053v5d4cff4tsv5b935sq86a796rmf78yo7q6u87a68o8b95139lp0a28gaiolaz2b05v30m8012ml1j3t1zoz2gen2x9k3e9n3vf14cor4u2f5bic5szp6agi6rvv797z7qga87jk8ohs95al9lyka2i2aiyaazc1064u0mhs12wd1jdm1zyr2goe2xj93ejc3vol4cyf4ubx5bs15t966aq96s5d79hs7qpu87td8orc95kc9m83a2rraj7qazlo06ea0mre135t1jn920872gy22xsr3et13vy64d844ulk5c1o5tix6azv6sf779rf7qzq88308p1895ty9mhya31cajhkazv705k20lwx12bm1ist1ze22g3o2wyp3dyp3v444cdt4trg5b7c5son6a5g6rkr78wx7q55878i8o6m94zi9lnda26yain1az0v05tl0m6n12l71j2k1znp2gdh2x8b3e8k3vdq4cnn4u115bh65sy76af96rub796o7qeq87i78og995989lx3a2gqaiwsazao063c0mge12uu1jc71zx72gmz2xhr3ehy3vn64cx04uaj5bqj5t7u6aoo6s4279g77qok87rt8oq495iv9m6xa2qdaj6nazkb06d60mq0134o1jlt20702gwk2xrj3erj3vwy4d6p4ukc5c0c5thm6ayk6sds79q37qy7881n8ozo95sm9mgea302ajg2aztz05im0lvr12a71irm1zcm2g2g2wx73dxh3v2m4ccm4tq15b685snc6a4f6rjk78vw7q40877e8o5i94yc9lm8a25railwayzp05sg0m5g12k11j1c1zmh2gc62x703e733vcd4cm34tzo5bfl5swx6adq6rt5795a7qdn87gx8of7957z9lw0a2fhaivqaz9g062a0mf712tu1jb21zw92glu2xgr3egs3vm34cvu4u9c5bpe5t6k6anl6s2s79f77qnc87qw8ooy95hz9m5qa2pfaj5dazja06bu0moy133b1jkq205o2gvj2xq83eqi3vvn4d5l4uj15bz65tgd6axd6sco79oy7qx9880n8oyx95rq9mfqa2z6ajfeazt205hv0lup129a1iqg1zbn2g182ww63dw73v1l4cba4toy5b4u5sm76a306ric78ui7q2t87668o4f94xb9llaa24wail2ayyv05rn0m4m12j51j0f1zlh2gb62x5y3e633vb94cl44tyj5beo5svr6acu6rry794c7qcf87fz8oe295749luza2eqaiutaz8r061e0mei12sw1ja91zv52gkw2xfj3efo3vks4cum4u825bo45t5e6amb6s1p79dx7qmc87pn8oo095gt9m4wa2odaj4pazie06ba0mo5132t1jjx20542gum2xpi3epf3vur4d4e4ui05bxx5tf86aw56sbg79nr7qvz87zh8oxl95ql9mefa2y3aje5azs205gq0ltt128a1ipo1zap2g0h2wv73dve3v0i4cae4tnq5b3w5skx6a206rh578tj7q1o87568o3b94wa9lk7a23taijyayxs05qi0m3k12i21ize1zkf2ga52x4w3e4z3va64cjw4txe5bd95suj6abb6rqp792u7qb887ej8ocx955r9ltva2deaitqaz7g060c0md712rv1j901zu62gjp2xel3eej3vjt4cti4u705bmz5t456al46s0b79co7qku87oe8omh95fk9m3da2n4aj35azh4069q0mmu13171jil203i2gta2xnx3eo53vt84d364ugj5bwp5tdu6auv6sa379mf7qun87y28owa95p69md5a2wpajcwazqo05fh0lse126z1io61z9b2fyw2wtr3dtr3uz24c8q4tmb5b275sjk6a0c6rfq78rv7q07873j8o1t94un9lina227aiifayw805p20m2012gm1ixu1ziy2g8k2x3e3e3f3v8m4cid4tvs5bbv5ssz6aa16rp6791m7q9q87db8obe954g9lsaa2c1ais1az6005yl0mbp12q11j7f1zsb2gi22xco3ecu3vhw4crr4u555bl85t2f6ajf6rys79b37qji87mx8olb95e59m29a2lqaj20azfo068i0mlb12zw1jgz20242grl2xmh3emd3vrp4d1b4uey5buu5tc76at26s8g79kr7qt387wl8ouu95nt9mbra2vfajbjazpd05e10lr0125g1imp1z7p2fxc2ws23ds63uxa4c764tkj5b0p5shr69yw6re178qh7pyn87298o0f94ti9lhga216aihaayv805nw0m0y12fc1iwn1zhj2g772x1t3e1v3v6y4cgo4tu45ba25srb6a866rnl78zt7q8987bm8oa3952z9lr6a2aqair5az4w05xu0mao12pb1j6e1zri2ggx2xbp3ebj3vgr4cqc4u3u5bjq5t0z6ahy6rx9799o7qhx87lj8ojq95cu9m0ra2kjaj0mazem06790mkd12yr1jg420102gqq2xla3elf3vqe4d094udj5bto5tar6aru6s7279ji7qrs87vc8otm95mm9mana2u9ajahazob05d30lq2124l1ilu1z6w2fwi2wra3dr93uwg4c624tjk5aze5sgo69xg6rcu78p07pxg870t8nz894s59lgaa1zvaig7aytz05mv0lzs12ef1ivl1zgq2g6a2x133e123v694cfw4ttb5b9a5sqd6a7c6rmi78yx7q7287ap8o8v95219lpya29taipwaz3x05wk0m9o12o01j5d1zq82gfy2xai3ean3vfn4cpi4u2t5biw5t016ah16rwb798n7qh087kg8oiu95bs9lzxa2jiaizuazdm066h0mjd12xx1jf220042gpm2xkf3ekb3vpk4cz64ucs5bsn5ta06aqu6s6879ih7qqt87u98osj95li9m9ia2t5aj9dazn805c10lp0123j1iks1z5t2fvf2wq53dq73uvb4c534tih5ayl5sfo69ws6rbx78oe7pwj87058nya94rd9lf8a1z0aif3ayt305lr0lyv12d91ium1zfj2g582wzt3dzv3v4w4cen4ts05b7z5sp76a636rli78xr7q68879m8o82950y9lp4a28naip0az2q05vn0m8h12n41j471zpb2ger2x9k3e9e3ven4co64u1q5bhl5syv6afs6rv6797j7qfw87ji8ohr95au9lysa2iiaiymazci06550mi512wj1jds1zyp2goc2xiy3ej23vo34cxy4ub95bre5t8h6apm6s4u79hc7qpm87t98orj95km9m8ma2sbaj8gazmb05az0lny122c1ijj1z4g2fu22woq3doq3utv4c3j4th05aww5se769v06rag78mo7pv586yj8nx194py9le5a1xraie4ayrw05ks0lxm12c81ita1zec2g3r2wyi3dyc3v3j4cd44tqk5b6i5snp6a4o6rjy78we7q4n878b8o6j94zq9lnpa27kainpaz1q05ud0m7g12ls1j321znu2gdg2x7w3e7y3vcu4cmm4tzv5bfz5sx36ae66rth795y7qec87hx8ogc959d9lxia2h5aixgazba06440mh012vj1jcn1zxn2gn32xhr3ehl3vmq4cw94u9r5bpl5t6x6anr6s3879fi7qo087rh8opw95iw9m71a2qoaj6yazks059m0lmj12131ii81z3a2fss2wni3dnf3usi4c264tfh5avh5scj69tl6r8s78la7pti86x88nvf94on9lcma1whaiclayqm05j90lwe12aq1is21zcv2g2j2wx13dx33v1z4cbp4toy5b4x5sm06a2x6ria78ul7q31876j8o5294y29lmba25zaimeaz0705t40m5z12kk1j1m1zmo2gc22x6t3e6k3vbr4cl84tyq5bej5svt6acn6rs1794d7qcr87gc8oep957t9lvwa2foaivwaz9u062k0mfk12u01jb71zw42glo2xg93eg93vl94cv04u8a5boe5t5g6aml6s1r79ea7qmi87q78oof95hl9m5la2peaj5kazjj05890llb11zp1igz1z1v2frh2wm13dm13ur24c0q4te35au05sb869s36r7i78jq7ps886vm8nu494n19lbaa1uvaibaayp205i00luv129j1iqm1zbq2g142wvw3dvo3v0u4cac4tnt5b3o5skv6a1t6rh478tk7q1v875j8o3t94x09ll0a24uaikzayyz05rm0m4o12j11j0b1zl42gaq2x583e593va64cjy4tx65bda5sud6abi6rqs793b7qbp87fd8odr956w9lv0a2epaiuyaz8t061j0meg12sw1ja11zuy2gkf2xf23eey3vk24ctn4u755bn05t4c6al76s0p79cz7qli87p08onj95gj9m4ra2odaj4qazii057c0lk611yq1ifr1z0s2fq72wkw3dkr3upv4bzi4tcw5asw5sa169r36r6c78iv7pr586uw8nt594mf9lafa1ucaiahayoj05h60lua128l1ipv1zal2g072wul3dul3uzf4c954tmd5b2f5sji6a0j6rfw78sb7q0s874d8o2w94vz9lk8a23yaikeayy805r50m4112il1izn1zkm2g9y2x4l3e4a3v9d4cis4tw95bc15std6aa86rpq79237qam87e88oco955s9ltya2dpaitzaz7w060p0mdn12s41j991zu72gjn2xe83ee33vj24csp4u5z5bm05t326ak76rzf79c07qkb87o48ome95fn9m3oa2njaj3pazhp056d0ljg11xt1if31yzw2fpj2wk03dk03uox4byk4tbu5arq5s8v69pq6r5478hf7ppy86tg8ns194l29l9da1t0ai9hayn905g80lt2127o1iop1z9s2fz42wtu3dtk3uyp4c854tll5b1c5sik69zf6rer78r57pzj87378o1l94uu9liya22uaij2ayx205ps0m2t12h51iyc1zj52g8o2x343e333v7y4cho4tuw5bay5ss06a946roc790w7q9887cz8obd954k9lspa2cjaistaz6s05zj0mci12qw1j821zsw2gid2xcv3ecq3vhq4crb4u4q5bkl5t1v6aiq6ry879ah7qj187mi8ol195e19m2ba2lyaj2dazg605530lhy11wj1idk1yyl2fnx2wim3did3unh4bwz4tae5aqa5s7h69oh6r3r78g97pol86sb8nql94ju9l7ua1rrai7xaylz05en0lrr12631ine1z852fxq2ws43ds23uwv4c6k4tjp5azq5sgr69xu6rd578pn7py3871r8o0994te9lhna21eaihrayvm05og0m1d12fu1iwx1zhu2g772x1t3e1j3v6k4cg04ttf5b965sqi6a7c6rmv78z87q7t87bf8o9z95339lrca2b2aireaz5805y10maw12pc1j6e1zrb2ggo2xba3eb33vg34cpp4u305biz5t036ah76rwg79927qhe87l88ojl95cx9m0za2kwaj12azf4053q0lgs11v21ica1yx02fmk2wgy3dgw3ulr4bvf4t8n5aol5s5p69mo6r2178ef7pmy86qj8np494i79l6ka1qbai6saykn05dl0lqg12501im01z6y2fw82wqu3dqi3uvk4c4y4tid5ay45sfe69w96rbp78o37pwl87098nyq94rz9lg6a203aigeayue05n70m0712el1ivp1zgi2g5x2x0c3e053v4z4cel4trr5b7s5sou6a606rl978xx7q6a87a58o8j951u9lpza29waiq5az4605ww0m9y12oa1j5i1zq92gfq2xa63ea03vew4cog4u1q5bhl5syt6afp6rv7797j7qg587jp8oic95be9lzqa2jeaizvazdo052m0lfg11u11ib21yw32fle2wg23dfr3uku4bu94t7n5ang5s4n69lk6r0w78de7pls86pk8nny94ha9l5ea1pcai5layjn05cc0lpf123r1ikz1z5q2fv92wpn3dpk3uub4c3z4th35ax35se369v56rae78my7pvd86z58nxn94qx9lf7a1z2aifgaytf05m90lz712dm1iuq1zfk2g4x2wzf3dz63v454cdl4tqy5b6q5so06a4u6rkd78wp7q5c878x8o7j950n9loza28paip5az3005vw0m8r12na1j4a1zp82gei2x933e8t3vdu4cnc4u0o5bgm5sxr6aeu6ru5796q7qf387ix8oh995am9lyoa2imaiytazcw051k0leo11sy1ia71yux2fkh2wet3der3ujj4bt74t6d5amc5s3f69kf6qzs78c87pkr86oe8nmy94g39l4ea1o5ai4layig05bd0lo9122s1iju1z4s2fu32wop3doc3utd4c2r4tg55avv5sd669u06r9j78lw7pui86y68nwr94py9le8a1y1aieeaysb05l30lxz12ce1itg1zea2g3m2wy33dxv3v2r4ccb4tpi5b5i5smk6a3q6rj178vq7q4587828o6i94zw9lo0a27zaio6az2705uu0m7v12m31j391znx2gdd2x7q3e7l3vcf4cm14tza5bf85swe6add6rsu79597qdw87hj8og7959b9lxqa2hgaixxazbq050n0ldg11rz1i8w1ytu2fj12wdn3dd93uib4brp4t545akw5s2569j26qyi78az7pjh86n98nlr94f39l3ba1naai3layhn05ae0lnf121r1iiv1z3k2fsx2wn83dn03urq4c1a4tee5aue5sbe69sj6r7t78kg7psw86ws8nva94oo9lcxa1wwaidaayrc05k50lx512bi1ism1zdc2g2o2wx13dwp3v1j4cax4to65b3y5sl66a226rhn78u17q2r876e8o5394y99lmna26eaimxaz0r05tp0m6j12l31j211zmz2gc62x6q3e6c3vba4ckn4txy5bdr5suw6abw6rr9793v7qcb87g78oeo95839lw8a2g8aiwhazak04z90lcc11qm1i7u1ysj2fi12wcc3dc83ugx4bqi4t3k5aji5s0h69hh6qwr789a7phs86lj8nk594df9l1sa1lnai24ayg3058z0llx120e1ihg1z2b2frm2wm43dlr3uqo4c004tdc5at05sa969r16r6i78iu7prh86v58ntt94n29lbga1vbaibsaypq05im0lvi129y1iqx1zbr2g102wvh3dv53v014c9i4tmp5b2m5sjp6a0s6rg278sq7q1487518o3h94wx9ll2a254aildayzi05s60m5a12jj1j0q1zlc2gat2x533e4x3v9o4cj94twg5bce5sti6aai6rpx792d7qay87el8od8956d9lura2eiaiv0az8v04xu0lap11p81i681yr52fge2way3daj3ufj4bov4t2a5ai05rza69g66qvn78837pgo86ke8niy94c89l0ga1kdai0payeq057i0lki11yw1ig01z0r2fq42wkh3dk73uoy4byh4tbk5arj5s8j69po6r4z78ho7pq486u28nsl94m09la8a1u8aiajayol05hb0luc128m1ipq1zaf2fzt2wu43dtv3uyn4c834tlb5b155sic69za6reu78rb7q02873r8o2j94vp9lk5a23waikeayy705r40m3v12id1iz81zk42g992x3t3e3e3v8d4chr4tv45baw5ss46a946rok79167q9p87dm8oc6955m9ltua2dvaiu5az8704ww0l9w11o51i591ypw2ffa2w9k3d9d3ue14bnm4t0p5agp5rxo69es6qu3786p7pf886j38nhp94b39kzha1jgahzwaydy056s0ljr11y51if61yzw2fp52wji3dj33unx4bx84tai5aq85s7h69oc6r3x78gb7pp186sr8nrj94ks9l99a1t4ai9oaynl05gj0lte127v1ios1z9l2fyq2wt53dso3uxi4c6v4tk25azx5sh169y46rdi78q87pyq872q8o1994us9liza233aijdayxi05q70m3b12hj1iyq1zjb2g8q2x2y3e2q3v7d4cgw4tty5b9w5sqx6a7y6rnc78zw7q8i87cb8ob0954a9lsqa2clait3az7004vy0l8t11nb1i4a1yp62fee2w8v3d8g3udd4bmn4szy5afm5rwv69do6qt6785l7pe986i18ngp94a19kyga1ieahyvaycv055q0lio11x31ie41yyv2fo42wih3di43umv4bwa4t9d5ap95s6869nb6r2l78fa7pnq86rq8nq994js9l82a1s7ai8kaymq05fg0lsj126s1inx1z8i2fxv2ws33drt3uwi4c5y4tj35ayx5sg269x06rch78oy7pxn871d8o0594tc9lhua21oaii8ayw405p30m1w12gf1ixb1zi72g7b2x1t3e1b3v694cfj4tsv5b8m5spv6a6s6rm978yt7q7d87b88o9t95379lrha2bhairtaz5w04un0l7p11m01i351ynt2fd62w7g3d763ubu4blc4syd5aeb5rva69ce6qro784c7pct86gq8nfa948p9kx0a1h1ahxfaybi054a0lhb11vo1ics1yxh2fmt2wh43dgr3uli4buv4t825anr5s4z69lu6r1e78dt7pml86qb8np494id9l6va1qpai79ayl305e10lqt125a1im51z6z2fw32wqk3dq23uux4c484thh5axa5sef69vh6raw78nl7pw587068nyr94sa9lgja20maigxayv105no0m0p12ew1ivz1zgj2g5w2x023dzu3v4h4ce14tr35b725so36a576rkk78x67q5s879n8o8d951q9lq5a2a3aiqkaz4j04te0l6a11ko1i1m1ymc2fbj2w5x3d5g3uab4bjl4sww5acl5rtv69aq6qqb782q7pbh86f88ne0947c9kvta1frahwbayaa05370lg311ui1ibf1yw52fl92wfk3df23ujs4bt44t685am25s3469k86qzl78cc7pkv86ox8nni94h39l5da1pkai5xayk405cu0lpx12451ila1z5t2fv42wp83dow3utg4c2v4tfw5avr5scu69tv6r9d78ly7pup86yj8nxd94qo9lf7a1z2aifmayti05mh0lza12ds1iuo1zfh2g4l2wz13dyh3v3c4ccj4tpu5b5h5smq6a3m6rj678vq7q4f878c8o72950i9lowa28xaipcaz3d04s60l5411jh1i0i1yl62fag2w4q3d4d3u904bif4svf5abb5rs8699c6qol781b7p9t86du8ncg94609kuea1ejahuyay93051v0lex11t71iaa1yuw2fk72wee3de13uip4bs24t565akw5s2169ix6qyg78aw7pjo86ng8nmb94fn9l49a1o6ai4tayiq';
+  var out = [];
+  for (var y = 0; y < 152; y++) {
+    var row = [];
+    for (var i = 0; i < 24; i++) { row.push(parseInt(s.substr((y*24+i)*4, 4), 36)); }
+    out.push(row);
+  }
+  return out;
+})();
+
+/* LUNAR_DATA: KARI packed table, 151 years from 1900 */
+var LUNAR_START_YEAR = 1900;
+var LUNAR_DATA = [0x830084bd,0x82c404ae,0x82c60a57,0x82fe554d,0xc2c40d26,0x82c60d95,0x83014655,0x82c4056a,0xc2c609ad,0x8300255d,0x82c404ae,0x83006a5b,0xc2c40a4d,0x82c40d25,0x83005da9,0x82c60b55,0xc2c4056a,0x83002ada,0x82c6095d,0x830074bb,0xc2c4049b,0x82c40a4b,0x83005b4b,0x82c406a9,0xc2c40ad4,0x83024bb5,0x82c402b6,0x82c6095b,0xc3002537,0x82c40497,0x82fe6656,0x82c40e4a,0xc2c60ea5,0x830156a9,0x82c605b5,0x82c402b6,0xc30138ae,0x82c4092e,0x83017c8d,0x82c40c95,0xc2c40d4a,0x83016d8a,0x82c60b69,0x82c6056d,0xc301425b,0x82c4025d,0x82c4092d,0x83002d2b,0xc2c40a95,0x83007d55,0x82c40b4a,0x82c60b55,0xc3015555,0x82c604db,0x82c4025b,0x83013857,0xc2c4052b,0x83008a9b,0x82c40695,0x82c406aa,0xc3006aea,0x82c60ab5,0x82c404b6,0x83004aae,0xc2c60a57,0x82c40527,0x82fe3726,0x82c60d95,0xc30076b5,0x82c4056a,0x82c609ad,0x830054dd,0xc2c404ae,0x82c40a4e,0x83004d4d,0x82c40d25,0xc3008d59,0x82c40b54,0x82c60d6a,0x8301695a,0xc2c6095b,0x82c4049b,0x83004a9b,0x82c40a4b,0xc300ab27,0x82c406a5,0x82c406d4,0x83026b75,0xc2c402b6,0x82c6095b,0x830054b7,0x82c40497,0xc2c4064b,0x82fe374a,0x82c60ea5,0x830086d9,0xc2c605ad,0x82c402b6,0x8300596e,0x82c4092e,0xc2c40c96,0x83004e95,0x82c40d4a,0x82c60da5,0xc3002755,0x82c4056c,0x83027abb,0x82c4025d,0xc2c4092d,0x83005cab,0x82c40a95,0x82c40b4a,0xc3013b4a,0x82c60b55,0x8300955d,0x82c404ba,0xc2c60a5b,0x83005557,0x82c4052b,0x82c40a95,0xc3004b95,0x82c406aa,0x82c60ad5,0x830026b5,0xc2c404b6,0x83006a6e,0x82c60a57,0x82c40527,0xc2fe56a6,0x82c60d93,0x82c405aa,0x83003b6a,0xc2c6096d,0x8300b4af,0x82c404ae,0x82c40a4d,0xc3016d0d,0x82c40d25,0x82c40d52,0x83005dd4,0xc2c60b6a,0x82c6096d,0x8300255b,0x82c4049b,0xc3007a57,0x82c40a4b,0x82c40b25,0x83015b25,0xc2c406d4,0x82c60ada,0x830138b6];
+
+
+/* =========================================================
+   SAJU ENGINE — 만세력 계산 (순수 함수, DOM 미의존)
+   ========================================================= */
+var SAJU = (function () {
+  "use strict";
+
+  var STEMS = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+  var STEM_KO = ["갑", "을", "병", "정", "무", "기", "경", "신", "임", "계"];
+  var STEM_READ = ["갑목", "을목", "병화", "정화", "무토", "기토", "경금", "신금", "임수", "계수"];
+  var STEM_ELEM = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4];
+  var STEM_YANG = [1, 0, 1, 0, 1, 0, 1, 0, 1, 0];
+
+  var BRANCHES = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
+  var BRANCH_KO = ["자", "축", "인", "묘", "진", "사", "오", "미", "신", "유", "술", "해"];
+  var BRANCH_ELEM = [4, 2, 0, 0, 2, 1, 1, 2, 3, 3, 2, 4];
+  var BRANCH_ANIMAL = ["쥐", "소", "호랑이", "토끼", "용", "뱀", "말", "양", "원숭이", "닭", "개", "돼지"];
+  var BRANCH_HOUR = ["23:00~00:59", "01:00~02:59", "03:00~04:59", "05:00~06:59", "07:00~08:59", "09:00~10:59",
+    "11:00~12:59", "13:00~14:59", "15:00~16:59", "17:00~18:59", "19:00~20:59", "21:00~22:59"];
+
+  var ELEMS = ["목", "화", "토", "금", "수"];
+  var ELEM_HAN = ["木", "火", "土", "金", "水"];
+
+  /* 지장간: [천간 index, 비중] — 정기(主)가 마지막 */
+  var JANGAN = [
+    [[8, 1.0]],
+    [[9, 0.2], [7, 0.3], [5, 0.5]],
+    [[4, 0.2], [2, 0.3], [0, 0.5]],
+    [[1, 1.0]],
+    [[1, 0.2], [9, 0.3], [4, 0.5]],
+    [[7, 0.2], [4, 0.3], [2, 0.5]],
+    [[5, 0.3], [3, 0.7]],
+    [[1, 0.2], [3, 0.3], [5, 0.5]],
+    [[4, 0.2], [8, 0.3], [7, 0.5]],
+    [[7, 1.0]],
+    [[7, 0.2], [3, 0.3], [4, 0.5]],
+    [[0, 0.3], [8, 0.7]]
+  ];
+
+  /* ---------- 시간 유틸 ---------- */
+  function isLeapYear(y) { return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0; }
+  var MDAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  function dayOfYear(y, m, d) {
+    var n = 0;
+    for (var i = 1; i < m; i++) n += (i === 2 && isLeapYear(y)) ? 29 : MDAYS[i - 1];
+    return n + d;
+  }
+  function daysInMonth(y, m) { return (m === 2 && isLeapYear(y)) ? 29 : MDAYS[m - 1]; }
+
+  /* 1900-01-01 을 0분으로 하는 절대 분 */
+  var ABS_YEAR_START = (function () {
+    var arr = [], acc = 0, y;
+    for (y = TERM_START_YEAR; y <= 2051; y++) { arr[y] = acc; acc += (isLeapYear(y) ? 366 : 365) * 1440; }
+    return arr;
+  })();
+
+  /* 모든 절기(24)를 절대 분으로 펼쳐 정렬 */
+  var ABS_TERMS = (function () {
+    var list = [], yi, k, y, row, abs;
+    for (yi = 0; yi < TERM_DATA.length; yi++) {
+      y = TERM_START_YEAR + yi;
+      row = TERM_DATA[yi];
+      for (k = 0; k < 24; k++) {
+        abs = ABS_YEAR_START[y] + row[k];
+        list.push({ abs: abs, idx: k, year: y });
+      }
+    }
+    list.sort(function (a, b) { return a.abs - b.abs; });
+    return list;
+  })();
+
+  function absMinute(y, m, d, hh, mm) {
+    return ABS_YEAR_START[y] + (dayOfYear(y, m, d) - 1) * 1440 + hh * 60 + mm;
+  }
+
+  /* 특정 시각 이전(포함)의 마지막 절기 */
+  function termBefore(abs) {
+    var lo = 0, hi = ABS_TERMS.length - 1, mid;
+    if (abs < ABS_TERMS[0].abs) return ABS_TERMS[0];
+    while (lo < hi) {
+      mid = (lo + hi + 1) >> 1;
+      if (ABS_TERMS[mid].abs <= abs) lo = mid; else hi = mid - 1;
+    }
+    return ABS_TERMS[lo];
+  }
+  /* 특정 시각 이후의 첫 절(節, 짝수 index) */
+  function nextJie(abs, forward) {
+    var i, lo = 0, hi = ABS_TERMS.length - 1, mid, found = -1;
+    if (forward) {
+      if (abs < ABS_TERMS[0].abs) return ABS_TERMS[0];
+      while (lo < hi) {
+        mid = (lo + hi + 1) >> 1;
+        if (ABS_TERMS[mid].abs <= abs) lo = mid; else hi = mid - 1;
+      }
+      for (i = lo + 1; i < ABS_TERMS.length; i++) if (ABS_TERMS[i].idx % 2 === 0) { found = i; break; }
+      return found >= 0 ? ABS_TERMS[found] : null;
+    } else {
+      while (lo < hi) {
+        mid = (lo + hi + 1) >> 1;
+        if (ABS_TERMS[mid].abs < abs) lo = mid; else hi = mid - 1;
+      }
+      for (i = lo; i >= 0; i--) if (ABS_TERMS[i].idx % 2 === 0) { found = i; break; }
+      return found >= 0 ? ABS_TERMS[found] : null;
+    }
+  }
+
+  /* ---------- 음력 → 양력 ---------- */
+  function lunarMonthDays(data, m) { return ((data >> (12 - m)) & 1) ? 30 : 29; }
+  function lunarLeapMonth(data) { return (data >> 12) & 0xF; }
+  function lunarYearDays(data) { return (data >> 17) & 0x1FF; }
+
+  function lunarToSolar(ly, lm, ld, leap) {
+    var i = ly - LUNAR_START_YEAR;
+    if (i < 0 || i >= LUNAR_DATA.length) return null;
+    var data = LUNAR_DATA[i], L = lunarLeapMonth(data);
+    if (leap && L !== lm) return null;
+    var maxDay = leap ? (((data >> 16) & 1) ? 30 : 29) : lunarMonthDays(data, lm);
+    if (ld < 1 || ld > maxDay) return null;
+    var days = 0, m, k;
+    for (m = 1; m < lm; m++) {
+      days += lunarMonthDays(data, m);
+      if (L && m === L) days += ((data >> 16) & 1) ? 30 : 29;
+    }
+    if (leap) days += lunarMonthDays(data, lm);
+    days += ld - 1;
+    /* 음력 1/1 의 양력 날짜 */
+    var base = lunarNewYearSolar(ly);
+    if (!base) return null;
+    var jd = jdn(base.y, base.m, base.d) + days;
+    return jdnToDate(jd);
+  }
+
+  var LNY_CACHE = {};
+  function lunarNewYearSolar(ly) {
+    if (LNY_CACHE[ly]) return LNY_CACHE[ly];
+    var i = ly - LUNAR_START_YEAR;
+    if (i < 0 || i >= LUNAR_DATA.length) return null;
+    var days = 0, y;
+    for (y = LUNAR_START_YEAR; y < ly; y++) days += lunarYearDays(LUNAR_DATA[y - LUNAR_START_YEAR]);
+    /* 1900-01-31 = 음력 1900/1/1 */
+    var res = jdnToDate(jdn(1900, 1, 31) + days);
+    LNY_CACHE[ly] = res;
+    return res;
+  }
+
+  function solarToLunar(y, m, d) {
+    var target = jdn(y, m, d), ly, i, base, days, data, L, k, m2, seq, acc, leapOut, monthOut, dayOut;
+    if (target < jdn(1900, 1, 31)) return null;
+    for (ly = y - 1; ly <= y + 1; ly++) {
+      i = ly - LUNAR_START_YEAR;
+      if (i < 0 || i >= LUNAR_DATA.length) continue;
+      base = lunarNewYearSolar(ly);
+      if (!base) continue;
+      var start = jdn(base.y, base.m, base.d);
+      var total = lunarYearDays(LUNAR_DATA[i]);
+      if (target >= start && target < start + total) {
+        data = LUNAR_DATA[i]; L = lunarLeapMonth(data);
+        seq = [];
+        for (m2 = 1; m2 <= 12; m2++) {
+          seq.push([m2, false, lunarMonthDays(data, m2)]);
+          if (L && m2 === L) seq.push([m2, true, ((data >> 16) & 1) ? 30 : 29]);
+        }
+        days = target - start; acc = 0;
+        for (k = 0; k < seq.length; k++) {
+          if (days < acc + seq[k][2]) { monthOut = seq[k][0]; leapOut = seq[k][1]; dayOut = days - acc + 1; break; }
+          acc += seq[k][2];
+        }
+        return { y: ly, m: monthOut, d: dayOut, leap: !!leapOut };
+      }
+    }
+    return null;
+  }
+
+  /* ---------- 율리우스일 ---------- */
+  function jdn(y, m, d) {
+    var a = Math.floor((14 - m) / 12), yy = y + 4800 - a, mm = m + 12 * a - 3;
+    return d + Math.floor((153 * mm + 2) / 5) + 365 * yy + Math.floor(yy / 4) - Math.floor(yy / 100) + Math.floor(yy / 400) - 32045;
+  }
+  function jdnToDate(j) {
+    var a = j + 32044, b = Math.floor((4 * a + 3) / 146097), c = a - Math.floor(146097 * b / 4);
+    var dd = Math.floor((4 * c + 3) / 1461), e = c - Math.floor(1461 * dd / 4);
+    var mm = Math.floor((5 * e + 2) / 153), day = e - Math.floor((153 * mm + 2) / 5) + 1;
+    var month = mm + 3 - 12 * Math.floor(mm / 10), year = 100 * b + dd - 4800 + Math.floor(mm / 10);
+    return { y: year, m: month, d: day };
+  }
+
+  /* ---------- 오행 / 십신 ---------- */
+  function elemOfStem(s) { return STEM_ELEM[s]; }
+  function elemOfBranch(b) { return BRANCH_ELEM[b]; }
+  /* 상생: 목→화→토→금→수→목 */
+  function generates(a, b) { return (a + 1) % 5 === b; }
+  function controls(a, b) { return (a + 2) % 5 === b; }
+
+  function tenGod(dayStem, st) {
+    var de = STEM_ELEM[dayStem], se = STEM_ELEM[st];
+    var same = STEM_YANG[dayStem] === STEM_YANG[st];
+    if (de === se) return same ? "비견" : "겁재";
+    if (generates(de, se)) return same ? "식신" : "상관";
+    if (controls(de, se)) return same ? "편재" : "정재";
+    if (controls(se, de)) return same ? "편관" : "정관";
+    return same ? "편인" : "정인";
+  }
+
+  var TEN_ORDER = ["비견", "겁재", "식신", "상관", "편재", "정재", "편관", "정관", "편인", "정인"];
+  var TEN_GROUP = {
+    "비견": "비겁", "겁재": "비겁", "식신": "식상", "상관": "식상",
+    "편재": "재성", "정재": "재성", "편관": "관성", "정관": "관성",
+    "편인": "인성", "정인": "인성"
+  };
+
+  function ganjiName(stem, branch) { return STEMS[stem] + BRANCHES[branch]; }
+
+  /* ---------- 사주 계산 ---------- */
+  function computePillars(solar, hourBranch, jasiNextDay) {
+    var y = solar.y, m = solar.m, d = solar.d;
+    var hasHour = (hourBranch !== null && hourBranch !== undefined);
+    var HOUR_START = [23, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21];
+    var clock = hasHour ? HOUR_START[hourBranch] : 12;
+    var abs = absMinute(y, m, d, clock, 0);
+
+    /* 자시(23~24시)면 일주를 다음 날로 */
+    var dayShift = 0;
+    var jd = jdn(y, m, d);
+    if (hasHour && hourBranch === 0 && jasiNextDay) dayShift = 1;
+    var dayIdx = (((jd + dayShift) + 49) % 60 + 60) % 60;
+    var dayStem = dayIdx % 10, dayBranch = dayIdx % 12;
+
+    /* 년주: 입춘 기준 */
+    var ipchun = null, yi;
+    for (yi = 0; yi < ABS_TERMS.length; yi++) {
+      if (ABS_TERMS[yi].year === y && ABS_TERMS[yi].idx === 2) { ipchun = ABS_TERMS[yi]; break; }
+    }
+    var sajuYear = (ipchun && abs < ipchun.abs) ? y - 1 : y;
+    var yearIdx = ((sajuYear - 4) % 60 + 60) % 60;
+    var yearStem = yearIdx % 10, yearBranch = yearIdx % 12;
+
+    /* 월주: 절기 기준 */
+    var t = termBefore(abs);
+    var jieIdx = t.idx % 2 === 0 ? t.idx : (t.idx - 1 + 24) % 24;
+    var monthBranch = ((jieIdx / 2) + 1) % 12;
+    var tigerBase = (yearStem % 5) * 2 + 2;
+    var monthStem = (tigerBase + ((monthBranch - 2 + 12) % 12)) % 10;
+
+    /* 시주 */
+    var hourStem = null;
+    if (hasHour) hourStem = ((dayStem % 5) * 2 + hourBranch) % 10;
+
+    return {
+      year: { stem: yearStem, branch: yearBranch },
+      month: { stem: monthStem, branch: monthBranch },
+      day: { stem: dayStem, branch: dayBranch },
+      hour: hasHour ? { stem: hourStem, branch: hourBranch } : null,
+      sajuYear: sajuYear,
+      hasHour: hasHour,
+      term: t
+    };
+  }
+
+  function compute(input) {
+    var solar = input.solar, lunar = input.lunar;
+    var p = computePillars(solar, input.hourBranch, input.jasiNextDay !== false);
+    var dayStem = p.day.stem;
+
+    /* 글자 목록 (년, 월, 일, 시) */
+    var chars = [];
+    chars.push({ pos: "년", stem: p.year.stem, branch: p.year.branch, ten: tenGod(dayStem, p.year.stem) });
+    chars.push({ pos: "월", stem: p.month.stem, branch: p.month.branch, ten: tenGod(dayStem, p.month.stem) });
+    chars.push({ pos: "일", stem: p.day.stem, branch: p.day.branch, ten: "일간" });
+    if (p.hour) chars.push({ pos: "시", stem: p.hour.stem, branch: p.hour.branch, ten: tenGod(dayStem, p.hour.stem) });
+
+    /* 오행 (천간 1.0, 지지 지장간 분배) */
+    var elemW = [0, 0, 0, 0, 0], tenW = {}, i, j;
+    for (i = 0; i < TEN_ORDER.length; i++) tenW[TEN_ORDER[i]] = 0;
+    chars.forEach(function (c) {
+      elemW[elemOfStem(c.stem)] += 1.0;
+      if (c.pos !== "일") tenW[tenGod(dayStem, c.stem)] += 1.0;
+      var jg = JANGAN[c.branch];
+      for (j = 0; j < jg.length; j++) {
+        elemW[elemOfStem(jg[j][0])] += jg[j][1];
+        if (c.pos !== "일") tenW[tenGod(dayStem, jg[j][0])] += jg[j][1];
+      }
+    });
+    /* 일간 자신은 비견 계열 1.0 (일지 제외) — 일지 지장간도 십신에 포함 */
+    var jgDay = JANGAN[p.day.branch];
+    for (j = 0; j < jgDay.length; j++) tenW[tenGod(dayStem, jgDay[j][0])] += jgDay[j][1];
+
+    var totalW = elemW.reduce(function (a, b) { return a + b; }, 0);
+    var elemPct = elemW.map(function (v) { return v / totalW * 100; });
+    elemW = elemW.map(function (v) { return Math.round(v * 10) / 10; });
+    elemPct = elemPct.map(function (v) { return Math.round(v * 10) / 10; });
+
+    var tenTotal = 0;
+    for (i = 0; i < TEN_ORDER.length; i++) tenTotal += tenW[TEN_ORDER[i]];
+    var tenList = TEN_ORDER.map(function (n) {
+      return { name: n, group: TEN_GROUP[n], w: Math.round(tenW[n] * 10) / 10, pct: Math.round(tenW[n] / tenTotal * 1000) / 10 };
+    }).sort(function (a, b) { return b.w - a.w; });
+
+    var groupW = { 비겁: 0, 식상: 0, 재성: 0, 관성: 0, 인성: 0 };
+    for (i = 0; i < TEN_ORDER.length; i++) groupW[TEN_GROUP[TEN_ORDER[i]]] += tenW[TEN_ORDER[i]];
+    var support = groupW["비겁"] + groupW["인성"];
+    var supportPct = Math.round(support / tenTotal * 1000) / 10;
+
+    var strength;
+    if (supportPct >= 58) strength = { label: "신강", pct: supportPct, text: "기운이 넘치는 사주" };
+    else if (supportPct >= 42) strength = { label: "중화", pct: supportPct, text: "균형 잡힌 사주" };
+    else strength = { label: "신약", pct: supportPct, text: "기운을 채워야 하는 사주" };
+
+    /* 대운 */
+    var daewoon = computeDaewoon(p, solar, input.gender);
+
+    /* 세운 / 오늘 */
+    var now = input.now || new Date();
+    var todaySolar = { y: now.getFullYear(), m: now.getMonth() + 1, d: now.getDate() };
+    var todayP = computePillars(todaySolar, 6, true);
+
+    var res = {
+      input: input,
+      solar: solar,
+      lunar: lunar,
+      pillars: p,
+      chars: chars,
+      dayMaster: { stem: dayStem, elem: STEM_ELEM[dayStem], yang: STEM_YANG[dayStem] },
+      elemW: elemW,
+      elemPct: elemPct,
+      elemRank: elemW.map(function (v, i) { return { i: i, w: v, pct: elemPct[i] }; }).sort(function (a, b) { return b.w - a.w; }),
+      tenList: tenList,
+      tenW: tenW,
+      groupW: groupW,
+      supportPct: supportPct,
+      strength: strength,
+      daewoon: daewoon,
+      saeun: { year: todayP.sajuYear, stem: todayP.year.stem, branch: todayP.year.branch, ten: tenGod(dayStem, todayP.year.stem) },
+      today: { date: todaySolar, stem: todayP.day.stem, branch: todayP.day.branch, ten: tenGod(dayStem, todayP.day.stem) },
+      ganjiText: {
+        year: ganjiName(p.year.stem, p.year.branch),
+        month: ganjiName(p.month.stem, p.month.branch),
+        day: ganjiName(p.day.stem, p.day.branch),
+        hour: p.hour ? ganjiName(p.hour.stem, p.hour.branch) : "모름"
+      }
+    };
+    return res;
+  }
+
+  function computeDaewoon(p, solar, gender) {
+    var yangYear = STEM_YANG[p.year.stem] === 1;
+    var male = gender === "M";
+    var forward = male ? yangYear : !yangYear;
+    var abs = absMinute(solar.y, solar.m, solar.d, 12, 0);
+    var target = nextJie(abs, forward);
+    if (!target) return { forward: forward, startAge: 1, startText: "1세", list: [] };
+    var days = Math.abs(target.abs - abs) / 1440;
+    var yearsF = days / 3;
+    var years = Math.floor(yearsF);
+    var months = Math.round((yearsF - years) * 12);
+    if (months === 12) { years += 1; months = 0; }
+    if (years < 1) { years = 1; months = 0; }
+
+    var monthIdx = 60;
+    var idx = ((p.month.stem - p.month.branch) + 60) % 60;
+    /* 월주 index on 60 cycle */
+    var ms = p.month.stem, mb = p.month.branch;
+    monthIdx = 0;
+    for (var k = 0; k < 60; k++) { if (k % 10 === ms && k % 12 === mb) { monthIdx = k; break; } }
+
+    var list = [];
+    for (var n = 1; n <= 9; n++) {
+      var idx2 = ((monthIdx + (forward ? n : -n)) % 60 + 60) % 60;
+      var st = idx2 % 10, br = idx2 % 12;
+      var startAge = years + (n - 1) * 10;
+      list.push({
+        n: n,
+        startAge: startAge,
+        endAge: startAge + 9,
+        stem: st, branch: br,
+        ganji: ganjiName(st, br),
+        tenStem: tenGod(p.day.stem, st),
+        tenBranch: tenGod(p.day.stem, JANGAN[br][JANGAN[br].length - 1][0]),
+        elemStem: STEM_ELEM[st],
+        elemBranch: BRANCH_ELEM[br]
+      });
+    }
+    return {
+      forward: forward,
+      startAge: years,
+      startMonths: months,
+      startText: years + "세" + (months ? " " + months + "개월" : ""),
+      list: list
+    };
+  }
+
+  return {
+    compute: compute,
+    computePillars: computePillars,
+    lunarToSolar: lunarToSolar,
+    solarToLunar: solarToLunar,
+    jdn: jdn,
+    jdnToDate: jdnToDate,
+    daysInMonth: daysInMonth,
+    tenGod: tenGod,
+    STEMS: STEMS, STEM_KO: STEM_KO, STEM_READ: STEM_READ, STEM_ELEM: STEM_ELEM, STEM_YANG: STEM_YANG,
+    BRANCHES: BRANCHES, BRANCH_KO: BRANCH_KO, BRANCH_ELEM: BRANCH_ELEM, BRANCH_ANIMAL: BRANCH_ANIMAL,
+    BRANCH_HOUR: BRANCH_HOUR,
+    ELEMS: ELEMS, ELEM_HAN: ELEM_HAN,
+    JANGAN: JANGAN, TEN_ORDER: TEN_ORDER, TEN_GROUP: TEN_GROUP,
+    termAt: function (y, k) { return ABS_TERMS; }
+  };
+})();
+
+if (typeof module !== "undefined" && module.exports) { module.exports = SAJU; }
+
+
+/* =========================================================
+   COPY — 할미의 말투로 쓴 해석 사전
+   ========================================================= */
+var COPY = (function () {
+  "use strict";
+
+  /* ---------- 천간 10 ---------- */
+  var stems = [
+    { /* 甲 */
+      han: "甲", ko: "갑목", img: "하늘로 곧게 뻗는 소나무",
+      body: [
+        "네 일간이 갑목이다. 겨울 언 땅을 뚫고 올라오는 큰 나무 같은 기운이지. 위로만 뻗으라고 타고났으니, 굽히는 법을 배우는 데 평생을 쓴다.",
+        "남이 시키지 않아도 앞에 나서고, 한번 세운 생각은 끝까지 간다. 그 곧음이 네 무기고, 그 곧음이 네 재앙이다."
+      ],
+      shadow: "\"내가 맞는데 왜 굽히냐\" — 그 한마디로 사람 여럿 잃었다. 뿌리 안 보이면 나무도 못 버틴다.",
+      care: "가끔은 질 줄도 알아라. 이기는 것보다 오래 가는 게 낫다."
+    },
+    { /* 乙 */
+      han: "乙", ko: "을목", img: "담장을 타고 오르는 넝쿨",
+      body: [
+        "네 일간이 을목이다. 큰 나무보다 넝쿨이 낫다. 담장도 타고, 틈도 찾고, 결국엔 햇빛이 있는 데까지 올라간다.",
+        "부드러운 게 약한 게 아니다. 너는 세게 밀지 않고 오래 잡아당기는 쪽으로 이긴다. 사람들 그거 모르고 너를 만만하게 본다."
+      ],
+      shadow: "속을 안 보여주는 게 무기인 줄 알지만, 가까운 사람에게까지 그러면 외롭다. 혼자 다 계산하고 혼자 서운해한다.",
+      care: "기댈 사람 하나는 정해 둬라. 넝쿨도 기댈 담이 있어야 하늘까지 간다."
+    },
+    { /* 丙 */
+      han: "丙", ko: "병화", img: "한낮에 떠 있는 해",
+      body: [
+        "네 일간이 병화다. 숨길 줄 모르는 해 같은 기운. 기분 좋으면 온 세상이 밝고, 기분 상하면 그 자리가 사막이 된다.",
+        "사람들 네 앞에선 다들 웃는다. 네가 방 안의 온도를 정하는 놈이니까. 그런데 정작 네가 어두울 때 받아줄 사람은 몇 없지."
+      ],
+      shadow: "뒤끝은 없는데 앞끝이 세다. 말하고 나서 후회하는 그 속도가 너무 빠르다. 그리고 계획 없이 시작해서 반은 안 끝낸다.",
+      care: "뜨거운 건 오래 못 간다. 식지 않으려면 기름을 넣어야지 — 그게 습관이다."
+    },
+    { /* 丁 */
+      han: "丁", ko: "정화", img: "바람 막은 등잔불",
+      body: [
+        "네 일간이 정화다. 활활 타는 불이 아니라, 어둠 속에서 한 사람을 비추는 등잔불. 소리 없이 방 안을 데우는 기운이다.",
+        "너는 큰 무리에선 잘 안 보인다. 그런데 누군가 네 등불 앞에 앉으면 그 사람은 다시 못 떠난다. 네가 그런 걸 안다."
+      ],
+      shadow: "혼자 다 앓고 혼자 결론 내린다. \"말 안 했는데 왜 몰라\" 하는 그 마음, 상대는 정말 모른다.",
+      care: "불은 바람 불면 꺼진다. 유리등 안에만 두지 말고 세상에 좀 내보여라."
+    },
+    { /* 戊 */
+      han: "戊", ko: "무토", img: "계절을 다 견디는 큰 산",
+      body: [
+        "네 일간이 무토다. 산이다. 사람들이 네게 기대고, 네가 무너질 것 같으면 다들 같이 무너진다. 그래서 너는 아무 데도 못 기댄다.",
+        "느리다고 놀리지 마라. 산이 움직이면 골짜기가 바뀐다. 한번 마음먹으면 세상이 봐줄 때까지 안 움직이는 게 너의 힘이다."
+      ],
+      shadow: "고집이 근성으로 포장돼 있다. 그리고 체면 때문에 손해를 안다. 아픈 것도 티 안 내고, 도움 청하는 걸 지는 걸로 안다.",
+      care: "산도 물길 하나는 낸다. 오늘 한 번, 누구한테 \"도와줘\"라고 말해봐라."
+    },
+    { /* 己 */
+      han: "己", ko: "기토", img: "곡식이 자라는 기름진 밭",
+      body: [
+        "네 일간이 기토다. 산이 아니라 밭이다. 무엇이든 심으면 자라게 하는 땅. 사람들이 네 옆에서 살아나는데, 정작 너는 자기가 마른 줄 모른다.",
+        "실속을 안다. 화려한 소리보다 실제로 손에 쥐는 걸 믿는다. 그 알뜰함이 네 재산이고, 그 계산이 너를 지치게 한다."
+      ],
+      shadow: "속으로 다 재고, 겉으론 안 그런 척한다. 서운한 걸 쌓아두다가 어느 날 갑자기 선을 긋는다. 상대는 왜 그런지 모른다.",
+      care: "밭도 쉬어야 곡식이 난다. 남의 일 다 받아주다 네 밭 마르면 아무도 못 먹는다."
+    },
+    { /* 庚 */
+      han: "庚", ko: "경금", img: "두드려 만든 도끼 날",
+      body: [
+        "네 일간이 경금이다. 불리고 두들겨 맞아 만들어진 쇠. 그래서 결단이 빠르고 말이 곧다. 돌려 말하는 걸 사치로 안다.",
+        "일 벌이는 속도도 빠지지 않는다. 대충 잡고 일단 시작해서 끝내는 힘이 있다. 그게 네가 남보다 앞서는 이유다."
+      ],
+      shadow: "정면돌파만 안다. 화해하는 법을 몰라서 관계를 한 번 끊으면 다시 못 잇는다. 그리고 말이 칼이라, 맞는 말을 틀리게 한다.",
+      care: "도끼는 벨 때보다 갈 때가 중요하다. 손에 쥐고 쉬어라 — 그게 네가 오래 쓰이는 법이다."
+    },
+    { /* 辛 */
+      han: "辛", ko: "신금", img: "보석을 다듬는 칼날",
+      body: [
+        "네 일간이 신금이다. 쇠를 다듬어 보석을 만드는 결. 눈이 밝고 손이 야무지다. 어디서 뭐가 어긋났는지 네가 제일 먼저 안다.",
+        "겉은 조용한데 속은 칼날이다. 웃으면서 다 보고, 다 기억한다. 네가 괜찮다고 할 때가 제일 안 괜찮을 때다."
+      ],
+      shadow: "완벽하지 않으면 아예 안 한다. 시작도 못 하고 벼르기만 하다 시간을 다 쓴다. 그리고 예민한 자존심이 사람을 밀어낸다.",
+      care: "다듬는 건 좋은데 깎아 없애지는 마라. 90점에 내놓아야 세상이 본다."
+    },
+    { /* 壬 */
+      han: "壬", ko: "임수", img: "막힘없이 흐르는 큰 강",
+      body: [
+        "네 일간이 임수다. 큰물이다. 막으면 돌아가고, 열면 온 들판을 적신다. 스케일이 커서 잔소리에 잘 안 흔들린다.",
+        "머리가 굵다. 큰 그림은 잘 그리는데, 그 그림 속에 네가 어디 서 있는지는 자주 잊는다. 물이라서 어디든 갈 수 있으니까."
+      ],
+      shadow: "계획을 물처럼 흘려보낸다. 좋은 말 하고 마는 게 아니라, 좋은 생각 하고 마는 게 문제다. 그리고 한번 마음 닫으면 바다처럼 안 보인다.",
+      care: "물도 둑이 있어야 논을 살린다. 이번 주 안에 하나만 — 딱 하나만 끝내라."
+    },
+    { /* 癸 */
+      han: "癸", ko: "계수", img: "새벽에 내리는 이슬비",
+      body: [
+        "네 일간이 계수다. 조용히 내려 다 젖게 하는 비. 목소리는 작은데 눈치는 빠르고, 남의 마음 읽는 데는 이 골목에서 네가 제일이다.",
+        "부드러워 보이지만 실은 제일 안 꺾인다. 물은 쥘 수도 벨 수도 없으니까. 싸움 안 하고 이기는 쪽이 너의 방식이다."
+      ],
+      shadow: "혼자 상상하고 혼자 확인한다. 의심이 많아서 물어볼 것도 안 묻고 결론 낸다. 그리고 걱정을 미리 사서 산다.",
+      care: "비는 밤새 내려야 땅이 젖는다. 조급해하지 마라 — 근데 오늘 할 일은 오늘 해라."
+    }
+  ];
+
+  /* ---------- 지지 12 (일지 중심) ---------- */
+  var branches = [
+    { han: "子", ko: "자", animal: "쥐", key: "밤의 눈치", text: "속이 깊고 계산이 빠르다. 밤에 혼자 생각이 많아지는 자리다." },
+    { han: "丑", ko: "축", animal: "소", key: "묵묵한 뚝심", text: "말보다 손이 먼저 나간다. 속을 잘 안 열고, 참다가 한 번에 터진다." },
+    { han: "寅", ko: "인", animal: "호랑이", key: "앞으로 뛰는 힘", text: "가만히 못 있는 자리. 시작은 빠른데 마무리가 늘 숙제다." },
+    { han: "卯", ko: "묘", animal: "토끼", key: "부드러운 고집", text: "겉은 순한데 속은 단단하다. 싫은 소리를 웃으면서 안 한다." },
+    { han: "辰", ko: "진", animal: "용", key: "큰 그릇", text: "스케일이 크고 꿈도 큰 자리. 현실 감각이 따라오면 크게 된다." },
+    { han: "巳", ko: "사", animal: "뱀", key: "조용한 야심", text: "겉으론 조용하고 속으론 뜨겁다. 한 번 마음먹은 건 소리 없이 해낸다." },
+    { han: "午", ko: "오", animal: "말", key: "멈출 줄 모르는 기세", text: "빠르고 화끈하다. 달리다 지쳐서야 속도를 본다." },
+    { han: "未", ko: "미", animal: "양", key: "따뜻한 계산", text: "정이 많아 보이는데 셈도 밝다. 손해 보는 척하다 이기는 자리." },
+    { han: "申", ko: "신", animal: "원숭이", key: "재빠른 재주", text: "머리 회전이 빠르고 응용이 강하다. 벌여놓고 수습이 약하다." },
+    { han: "酉", ko: "유", animal: "닭", key: "야무진 결벽", text: "깔끔하고 정확하다. 남에게도 그 기준을 들이대서 부딪힌다." },
+    { han: "戌", ko: "술", animal: "개", key: "의리의 고집", text: "한번 정 들면 끝까지 간다. 배신엔 유난히 오래 아파한다." },
+    { han: "亥", ko: "해", animal: "돼지", key: "넉넉한 물그릇", text: "속이 넓고 잘 퍼준다. 정작 자기 몫은 자주 잊는다." }
+  ];
+
+  /* ---------- 십신 10 ---------- */
+  var tenGods = {
+    "비견": {
+      han: "比肩", tag: "나와 어깨를 나란히 하는 놈",
+      body: [
+        "비견은 네 편에 서 있는 또 다른 너다. 자존심, 독립심, \"남한테 손 벌리기 싫다\"는 그 마음이 전부 여기서 나온다.",
+        "혼자 해내는 힘이 세다. 그런데 사람은 다 너처럼 안 굴러간다. 네 기준으로 남을 재면 자꾸 실망하고, 네가 더 해버린다."
+      ],
+      shadow: "고집이 신념으로 포장돼 있다. 그리고 남 잘되는 걸 축하하면서 속으로는 자기가 더 잘해야 직성이 풀린다.",
+      care: "같이 가는 법을 배워라. 혼자 빨리 가는 것보다 같이 멀리 가는 게 네 팔자엔 남는 장사다."
+    },
+    "겁재": {
+      han: "劫財", tag: "판을 뒤집는 또라이 기질",
+      body: [
+        "겁재는 남의 것도 내 것도 다 끌어와 판을 키우는 기운이다. 배짱이 세고 승부욕이 강하다. 조용히 지는 걸 못 견딘다.",
+        "모험을 무서워하지 않는다. 다만 그 배짱이 돈과 사람 관계에서 종종 도박처럼 굴러간다. 이길 때 크게 이기고, 질 때 통째로 잃는다."
+      ],
+      shadow: "말이 앞서고 계산이 뒷선다. 그리고 남의 것을 탐하는 마음을 '기회'라고 부르는 데 능하다.",
+      care: "판을 키우기 전에 네 몫부터 챙겨라. 네가 판돈이 되면 아무도 안 돌려준다."
+    },
+    "식신": {
+      han: "食神", tag: "입과 손에서 나오는 복",
+      body: [
+        "식신은 네가 세상에 내놓는 것들이다. 말, 요리, 글, 만든 것, 웃음. 이게 있으면 굶어 죽는 일이 없다. 재주로 먹고사는 팔자다.",
+        "마음이 넉넉해지고 사람을 편하게 한다. 이 기운이 강하면 사람들이 너한테 밥 얻으러 온다. 실제로 밥도 잘 차린다."
+      ],
+      shadow: "편하게 살고 싶은 마음이 게으름으로 넘어간다. 해야 할 일 앞에서 \"나중에\"를 잘 쓴다. 그리고 뭐든 맛있게 먹어서 몸이 따라온다.",
+      care: "네 재주를 혼자 쓰지 마라. 팔아야 복이 된다. 그리고 저녁은 조금 덜 먹어라."
+    },
+    "상관": {
+      han: "傷官", tag: "정곡을 찌르는 혀",
+      body: [
+        "상관은 보이는 것을 그냥 못 넘긴다. 말로든 글로든 똑바로 짚는다. 남이 못 하는 말을 하고, 그래서 미움도 받는다.",
+        "재주가 많고 표현이 세다. 무대에 서면 빛난다. 창의적인 일, 말하는 일, 가르치는 일이 붙는다."
+      ],
+      shadow: "맞는 말을 틀리게 한다. 옳다는 이유로 사람을 이기려 들고, 그 이김이 관계를 태운다. 윗사람 앞에서도 입이 먼저 나간다.",
+      care: "혀를 두 번 접어라. 한 번 접고, 한 번 더. 네가 옳아도 그 말은 내일 해도 된다."
+    },
+    "편재": {
+      han: "偏財", tag: "돈 냄새를 맡는 코",
+      body: [
+        "편재는 크게 벌고 크게 쓰는 돈그릇이다. 사람을 통해 돈이 들어오고, 씀씀이도 사람 좋은 쪽으로 나간다. 쪼잔한 데가 없다.",
+        "기회가 오면 잡는다. 남들이 망설일 때 손을 내미는 쪽이다. 사업, 영업, 중개, 투자 같은 판에서 감이 밝다."
+      ],
+      shadow: "들어오는 돈을 다 써버린다. 그리고 재는 게 약하다. 기회라고 믿은 것이 도박이 되는 순간을 못 알아챈다.",
+      care: "번 돈의 일부는 일단 숨겨라. 손이 닿지 않는 데에. 그게 네 팔자에 유일한 안전장치다."
+    },
+    "정재": {
+      han: "正財", tag: "한 푼 한 푼이 재산",
+      body: [
+        "정재는 성실하게 모으는 돈이다. 요행을 바라지 않고, 하는 일만큼 받는 게 제일 편하다. 월급도, 이자도 네 팔자와 맞는다.",
+        "돈에 대한 감각이 정직하다. 남한테 빚 안 지고 사는 걸 큰 자존심으로 여긴다. 그게 네 재산이다."
+      ],
+      shadow: "안전한 데만 서다가 큰 기회를 놓친다. 그리고 부모·배우자 문제로 지출이 커지면 속으로 오래 삭힌다.",
+      care: "모으는 건 잘한다. 이제 하나는 불려라. 단, 잃어도 자리에서 안 흔들릴 만큼만."
+    },
+    "편관": {
+      han: "偏官", tag: "어깨에 얹힌 무거운 짐",
+      body: [
+        "편관은 네게 채워지는 압박이다. 이겨야 하는 상황, 강한 경쟁, 나를 누르는 사람. 이 기운이 있으면 편하게 사는 게 오히려 어색하다.",
+        "위기에서 강해진다. 남들이 안 해보려는 걸 해내고, 그 힘으로 인정받는다. 군인·의사·경찰·소방·운동·공무 같은 계열과도 맞는다."
+      ],
+      shadow: "긴장을 놓는 법을 모른다. 쉬는 날에도 뭐가 나를 채근하는 것 같고, 결국 몸으로 값을 치른다. 그리고 권력 있는 사람에게 끌리거나, 너도 그렇게 변한다.",
+      care: "무서운 건 네 안의 짐이다. 오늘 한 시간, 아무것도 안 해도 되는 시간을 만들어라. 그게 훈련이다."
+    },
+    "정관": {
+      han: "正官", tag: "남이 봐도 반듯한 사람",
+      body: [
+        "정관은 네가 세상과 맺은 규칙이다. 예의, 책임, 체면. 널 보면 사람들이 '제대로 된 사람'이라고 말한다.",
+        "조직 안에서 신임을 얻는다. 맡은 일을 망치지 않고, 사람을 함부로 다루지 않는다. 그래서 결국 꼭 필요한 자리에 간다."
+      ],
+      shadow: "남의 시선이 너의 기준이 된다. 싫은 부탁도 거절 못 하고, 화가 나도 '체면' 때문에 웃는다. 그게 병이 된다.",
+      care: "좋은 사람 노릇 그만해도 넌 좋은 사람이다. 한 번은 거절해봐라. 세상 안 무너진다."
+    },
+    "편인": {
+      han: "偏印", tag: "남들이 안 보는 걸 보는 눈",
+      body: [
+        "편인은 남다른 눈이다. 직관, 상상, 눈치, 남들이 그냥 지나치는 결을 잡아낸다. 이 기운이 있으면 혼자 있는 시간이 필요하다.",
+        "혼자 파고들어 뭔가를 만들어내는 데 강하다. 연구, 기획, 분석, 종교·철학·심리, 글쓰기 같은 데서 빛난다."
+      ],
+      shadow: "생각이 많아 시작을 못 한다. 남이 하는 말도 의심하고, 정작 자기 생각은 안 물어본다. 그러다 혼자만 아는 결론에 도달해 혼자 상처받는다.",
+      care: "머릿속에서 세 번 돌렸으면 이제 밖에 한 번 내봐라. 안 꺼내면 아무 일도 안 일어난다."
+    },
+    "정인": {
+      han: "正印", tag: "받아서 자라는 사람",
+      body: [
+        "정인은 어머니 같은 기운이다. 배움, 보호, 인정. 사람들이 널 밉게 못 보고, 어른들이 유독 예뻐한다. 도움을 받아서 크는 팔자다.",
+        "배우는 힘과 정리하는 힘이 좋다. 읽고, 듣고, 이해하고, 남에게 잘 전한다. 교육·학문·상담·문서 쪽에 복이 있다."
+      ],
+      shadow: "받는 데 익숙해져서 스스로 나서는 걸 미룬다. 그리고 남의 인정이 없으면 힘이 빠진다. 준비만 하다 때를 놓친다.",
+      care: "이제는 받은 걸 내놓아라. 가르쳐라, 써라, 시작해라. 네 팔자는 내놓을 때 완성된다."
+    }
+  };
+
+  var groups = {
+    "비겁": {
+      name: "비겁", han: "比劫", line: "나를 세우는 힘",
+      text: "자존심과 추진력, 그리고 '내 사람'에 대한 의리. 이게 많으면 혼자서도 잘 살고, 적으면 사람 기운에 휘둘린다."
+    },
+    "식상": {
+      name: "식상", han: "食傷", line: "밖으로 나가는 힘",
+      text: "표현과 재주, 그리고 생산. 말이 많고 손이 빠르다. 이게 많으면 남한테 잘 퍼주는 대신 정작 네 몫을 잊는다."
+    },
+    "재성": {
+      name: "재성", han: "財星", line: "손에 쥐는 힘",
+      text: "돈과 현실 감각, 그리고 결과를 만드는 힘. 이게 많으면 세상 돌아가는 걸 잘 알지만 몸이 먼저 지친다."
+    },
+    "관성": {
+      name: "관성", han: "官星", line: "바깥과 겨루는 힘",
+      text: "규율과 책임, 그리고 남의 기대. 이게 많으면 어른이 빨리 되고, 그만큼 빨리 숨이 찬다."
+    },
+    "인성": {
+      name: "인성", han: "印星", line: "받아들이는 힘",
+      text: "배움과 보호, 그리고 생각. 이게 많으면 머리가 깊고, 그만큼 밖으로 나오는 데 시간이 걸린다."
+    }
+  };
+
+  /* ---------- 오행 ---------- */
+  var elems = {
+    "목": {
+      han: "木", title: "뻗어 나가는 기운", color: "청록", hex: "#5b9e7a", taste: "신맛",
+      dir: "동쪽", num: "3 · 8", season: "봄",
+      over: "나무 기운이 넘친다. 계획만 세우고 뻗어나가려 한다. 시작은 많은데 끝이 없다. 사람도 일도 다 끌어안아서 속이 상한다.",
+      under: "나무 기운이 모자란다. 새로 시작하는 힘이 약하다. 마음먹어도 첫걸음이 늦고, 남이 밀어줘야 움직인다.",
+      food: "신맛 · 나물 · 푸른 채소 · 매실차",
+      place: "숲, 공원, 서점, 도서관, 창가 자리",
+      habit: "아침에 기지개 크게 켜기, 새 일 하나만 작게 시작하기"
+    },
+    "화": {
+      han: "火", title: "피어오르는 기운", color: "주홍", hex: "#cf5b3d", taste: "쓴맛",
+      dir: "남쪽", num: "2 · 7", season: "여름",
+      over: "불 기운이 넘친다. 감정이 먼저 타오르고 말이 앞선다. 열정이 식는 속도도 빠르다. 잠을 못 자고 속이 타는 일이 잦다.",
+      under: "불 기운이 모자란다. 표현이 늦고 기쁨도 잘 안 드러난다. 좋은 것도 웃으며 말하지 않아서 남이 모른다.",
+      food: "붉은 음식 · 고추 · 대추차 · 따뜻한 차",
+      place: "햇빛 드는 창가, 노을 보이는 강변, 따뜻한 카페",
+      habit: "하루 한 번 크게 웃기, 고마운 사람에게 바로 말하기"
+    },
+    "토": {
+      han: "土", title: "담아 두는 기운", color: "황토", hex: "#c9a227", taste: "단맛",
+      dir: "가운데", num: "5 · 10", season: "환절기",
+      over: "흙 기운이 넘친다. 다 떠안고 다 참는다. 속으로 삭이는 게 쌓여 몸이 무겁고, 변화가 두렵다.",
+      under: "흙 기운이 모자란다. 중심이 흔들린다. 남의 말에 잘 휘둘리고, 사는 게 자꾸 어수선해진다.",
+      food: "단맛 · 곡식 · 고구마 · 단호박 · 밥 잘 챙기기",
+      place: "흙길, 산, 마당, 부엌, 단정한 방",
+      habit: "하루 세 끼 시간 지키기, 생긴 돈의 10%는 숨기기"
+    },
+    "금": {
+      han: "金", title: "매듭짓는 기운", color: "은백", hex: "#cfc6b4", taste: "매운맛",
+      dir: "서쪽", num: "4 · 9", season: "가을",
+      over: "쇠 기운이 넘친다. 칼 같다. 판단이 빠르고 말이 정확한데, 그게 사람을 벤다. 끊고 나서 후회를 안 한다.",
+      under: "쇠 기운이 모자란다. 끊어야 할 것을 못 끊는다. 정리·마무리가 약하고, 결단을 미루다 일이 커진다.",
+      food: "매운맛 · 무 · 배 · 도라지 · 생강차",
+      place: "정리된 책상, 조용한 방, 흰 물건이 많은 곳",
+      habit: "하루 10분 버릴 것 버리기, 미룬 결정 하나 오늘 끝내기"
+    },
+    "수": {
+      han: "水", title: "흘려보내는 기운", color: "남색", hex: "#4f7fa8", taste: "짠맛",
+      dir: "북쪽", num: "1 · 6", season: "겨울",
+      over: "물 기운이 넘친다. 생각이 많고 걱정이 앞선다. 남의 마음을 다 읽어서 혼자 지친다. 밤에 잠이 얕다.",
+      under: "물 기운이 모자란다. 쉬는 법을 모른다. 물 한 잔 마실 시간도 아껴 쓰다가 몸이 먼저 멈춘다.",
+      food: "검은 음식 · 검은콩 · 미역 · 굴 · 물 충분히",
+      place: "바다, 강, 호수, 욕실, 밤의 창가",
+      habit: "자기 전 물 한 잔과 10분 멍때리기, 주 1회 물에 몸 담그기"
+    }
+  };
+
+  /* ---------- MBTI ---------- */
+  var mbti = {
+    ISTJ: "말보다 결과로 증명하는 사람. 그런데 그 결과를 기다려주는 사람이 없다고 서운해한다.",
+    ISFJ: "챙기다가 정작 자기가 안 챙겨지는 걸 제일 늦게 안다. 부탁은 잘 받고, 부탁은 못 한다.",
+    INFJ: "사람 마음 다 읽으면서 자기 마음은 아무한테도 안 보여준다. 혼자 결론 내리고 혼자 떠난다.",
+    INTJ: "머릿속 계획은 완벽한데 세상이 그 속도로 안 와서 늘 답답하다. 그 답답음을 표정으로 다 말한다.",
+    ISTP: "말 없이 손으로 해결한다. 설명 귀찮아하고, 설명 안 해서 오해받는 걸 또 귀찮아한다.",
+    ISFP: "조용히 자기 세계를 지키는 사람. 그 세계에 들여보내주는 사람은 몇 안 된다.",
+    INFP: "마음속에 영화관이 있다. 상상은 크게, 실행은 작게. 시작만 하면 의외로 잘한다.",
+    INTP: "분석하다가 때를 놓친다. 결론을 안 내리는 게 결론인 사람. 그래도 그 분석이 결국 돈이 된다.",
+    ESTP: "일단 부딪히고 본다. 그 배짱이 네 재산이고, 그 배짱이 네 사고다. 브레이크 하나만 달아라.",
+    ESFP: "분위기 살리는 데는 이 골목에서 네가 으뜸. 그런데 집에 혼자 있을 때 제일 무섭다.",
+    ENFP: "사람한테서 충전하고 사람한테서 방전된다. 시작이 많아서 끝이 없다. 오늘 하나만 끝내라.",
+    ENTP: "말로 판을 흔든다. 토론에서 이기고 관계에서 진다. 그 머리를 한 군데에만 쓰면 크게 된다.",
+    ESTJ: "일 처리 하나는 기가 막히다. 그 기준을 가족한테 들이대면 집이 조용해진다.",
+    ESFJ: "다들 좋아하는 사람. 정작 '나도 좀 챙겨달라'는 말을 못 한다. 그 말을 오늘 해라.",
+    ENFJ: "사람을 키우는 데 타고났다. 남 잘되면 내 일처럼 기뻐한다. 네 몫의 기쁨도 챙겨라.",
+    ENTJ: "목표를 정하면 판을 짠다. 그 판에 사람을 넣는데, 사람은 말이 아니다. 그게 네가 배울 것."
+  };
+
+  /* ---------- 질문 카테고리 ---------- */
+  var qcats = [
+    { id: "work", label: "일 · 커리어", icon: "⛰" },
+    { id: "money", label: "돈 · 재물", icon: "◎" },
+    { id: "love", label: "사랑 · 가족", icon: "❀" },
+    { id: "people", label: "인간관계", icon: "☍" },
+    { id: "health", label: "건강 · 몸", icon: "☘" },
+    { id: "study", label: "공부 · 시험", icon: "✎" },
+    { id: "self", label: "그냥 나", icon: "◐" }
+  ];
+
+  /* 질문별 처방 — {A} 신강/신약, {D} 현재 대운 십신, {S} 세운 십신 자리에 치환 */
+  var answers = {
+    work: {
+      title: "일과 밥벌이 앞에서",
+      paras: [
+        "네 고민은 결국 하나다. <b>지금 자리가 나를 키우는 자리냐, 나를 갈아 넣는 자리냐.</b> 할미가 보기엔 이미 답이 나와 있다. 그런데 네가 그 답을 무서워서 안 열어보는 거다.",
+        "네 사주는 <b>{A}</b>다. {A_BODY} 여기서 중요한 건 '무엇을 하느냐'가 아니라 '누구 아래서 하느냐'다. 네 팔자는 윗사람 복이 갈린다. 사람 잘 만나면 10년이 붙고, 잘못 만나면 그 10년이 통째로 날아간다.",
+        "지금 {D} 대운이 들어와 있다. {D_WORK} 올해는 {S} 기운이 얹혀서, 벌리기보다 <b>한 군데를 깊게 파는 해</b>다. 새 일 세 개 벌이지도 마라. 하나 골라서 끝을 봐라. 끝을 보는 순간 다음 문이 열린다 — 이건 미신이 아니라 네 팔자가 그렇게 생겼다."
+      ]
+    },
+    money: {
+      title: "돈 앞에서",
+      paras: [
+        "돈 이야기 나오면 다들 \"복이 있냐\"고 묻는다. 할미는 그렇게 안 본다. <b>돈은 그릇이냐 못이냐</b>다. 네 사주는 <b>{A}</b>다. {A_BODY}",
+        "네 재물 그릇은 크게 벌어서 크게 잃는 쪽으로 열려 있다. 그게 나쁜 게 아니다. 다만 <b>버는 재주와 지키는 재주가 따로 있다</b>는 걸 인정해야 한다. 번 돈 중에 얼마를 못 쓰게 만들어 두느냐, 그 하나가 10년을 가른다.",
+        "지금 {D} 대운에서는 {D_MONEY} 올해 {S} 기운이 세니, 남이 권하는 것 중에 '확실하다'는 말이 붙은 건 다 의심해라. 네 팔자는 남의 확신에 제일 약하다."
+      ]
+    },
+    love: {
+      title: "사랑과 식구들 앞에서",
+      paras: [
+        "네 사주 일지가 {ILJI}다. 배우자 자리, 그리고 네가 사람을 대하는 진짜 방식이 여기 있다. {ILJI_TEXT}",
+        "네가 사람을 못 만나는 게 아니다. <b>맞는 사람을 만나도 네가 먼저 문을 닫는다.</b> 네 애정은 넓게 퍼주는 쪽이 아니라 한 사람에게 깊게 박히는 쪽이라, 한 번 상처 나면 회복이 느리다.",
+        "지금 {D} 대운이 {D_LOVE} 올해는 {S} 기운이라, 새로 시작하는 것보다 <b>있던 것을 다시 보는 해</b>다. 연락 끊긴 사람, 미뤄둔 말, 그거 하나가 올해의 답일 수 있다. 할미가 점쳐서 하는 말이 아니라, 네 팔자가 그 자리에 서 있다."
+      ]
+    },
+    people: {
+      title: "사람들 사이에서",
+      paras: [
+        "네 사주에서 제일 센 게 {TOP1}이다. {TOP1_TAG} 그래서 사람 문제가 생기면 늘 같은 자리에서 넘어진다. 상대가 바뀌어도 네가 넘어지는 자리는 안 바뀐다.",
+        "네 사회적 가면은 {MASK}. 그런데 속은 {INNER}. 이 간격이 크면 클수록 사람들이 널 오해하고, 너는 그 오해를 풀려고 더 지친다. <b>설명하지 않아도 되는 사람 몇 명</b>이 네겐 재산이다. 그거 늘리는 데만 힘 써라.",
+        "지금 {D} 대운에서는 {D_PEOPLE} 올해는 {S} 기운이니 사람 문제로 크게 싸우기보다 거리 조절로 푸는 게 이롭다. 손절은 미루고, 선은 분명히 그어라."
+      ]
+    },
+    health: {
+      title: "몸 앞에서",
+      paras: [
+        "네 사주에서 제일 약한 오행이 {WEAK}다. 그 자리가 네 몸의 약한 데로 온다. {WEAK_BODY}",
+        "너는 아픈 걸 늦게 안다. 참는 게 미덕이라고 배웠으니까. 그런데 네 팔자는 참는 걸로 버티게 생기지 않았다. {A} — 이 말은 <b>에너지를 어디서 얻고 어디서 잃는지</b>가 네 사주에 이미 적혀 있다는 뜻이다.",
+        "올해는 {S} 기운이니 {S_HEALTH} 잠부터 챙겨라. 밤 열두 시 넘겨서 하는 일은 다음 날 두 배로 돌아온다. 이건 할미가 60년 살면서 배운 거다."
+      ]
+    },
+    study: {
+      title: "공부와 시험 앞에서",
+      paras: [
+        "네 팔자는 <b>{A}</b>다. {A_BODY} 공부 그릇으로 보면 {STUDY}",
+        "머리 좋은 걸로 되는 게 아니다. 네 사주는 <b>한 번에 몰아서 하는 쪽</b>이지 매일 조금씩 하는 쪽이 아니다. 그런데 막판 몰아치기가 몸에 안 받는 나이가 오면 이 방식이 무너진다. 지금부터 조금씩으로 바꿔라.",
+        "지금 {D} 대운은 {D_STUDY} 올해는 {S} 기운이니 결과보다 과정을 남기는 해다. 기록해라. 네가 산 것 중에 제일 안 남는 게 머릿속에만 둔 것이다."
+      ]
+    },
+    self: {
+      title: "그냥, 나",
+      paras: [
+        "질문이 따로 없는 게 제일 솔직한 질문이다. 그럼 할미가 네 사주에서 제일 큰 소리로 하는 말을 해주마. <b>네 사주는 {A}다. {A_BODY}</b>",
+        "네 팔자는 {TOP1}이 끌고 간다. {TOP1_TAG} 이게 네 장점이자 네가 늘 같은 데서 넘어지는 이유다. 장점을 지우라는 게 아니다. 그 옆에 <b>한 칸 비워두라</b>는 거다.",
+        "지금 {D} 대운이 와 있다. {D_SELF} 올해 {S} 기운까지 얹히면 이건 <b>정리하는 해</b>지 벌리는 해가 아니다. 버릴 것 버리고, 남길 것 하나 정하고, 그거 하나만 잘해라. 그게 네 팔자가 제일 편해지는 길이다."
+      ]
+    }
+  };
+
+  var chapterTitles = [
+    { no: "01", title: "타고난 팔자와 기운", kicker: "네가 물려받은 여덟 글자, 그 원본을 먼저 보자." },
+    { no: "02", title: "너를 지배하는 기운", kicker: "네 안에서 제일 목소리 큰 놈들. 이놈들이 네 인생을 끌고 간다." },
+    { no: "03", title: "사회적 가면과 진짜 속마음", kicker: "남들이 보는 너와, 문 닫고 혼자 있을 때의 너." },
+    { no: "04", title: "팔자의 때와 대운 흐름", kicker: "언제 열리고 언제 닫히는지. 이건 미루면 못 쓰는 이야기다." },
+    { no: "05", title: "할미의 쓴소리와 개운 처방", kicker: "듣기 싫은 소리 뒤에 약이 있다. 이 장은 약장이다." }
+  ];
+
+  return {
+    stems: stems, branches: branches, tenGods: tenGods, groups: groups,
+    elems: elems, mbti: mbti, qcats: qcats, answers: answers, chapterTitles: chapterTitles
+  };
+})();
+
+
+/* =========================================================
+   UI — 입력, 보고서 렌더링, 내비게이션, 보관함
+   ========================================================= */
+(function () {
+  "use strict";
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  var STORE_KEY = "halmakase.vault.v1";
+  var state = { input: null, saju: null, chapter: 0, savedId: null };
+
+  /* ---------------- 내비 문구 사전 ---------------- */
+  var DW_TEXT = {
+    "비견": {
+      work: "혼자 판을 벌이기 좋은 때다. 동업은 조심해라.",
+      money: "돈이 네 손을 거쳐 가지만, 새는 길도 같이 열린다.",
+      love: "내 주장이 세지는 때다. 상대 말을 반만 들어줘도 훨씬 낫다.",
+      people: "사람은 늘지만 내 편과 아닌 편이 갈린다.",
+      study: "혼자 파고드는 공부에는 좋은 때다.",
+      self: "내 힘으로 서야 한다는 압박이 세진다."
+    },
+    "겁재": {
+      work: "판이 커지고 경쟁이 붙는다. 베팅은 작게 해라.",
+      money: "큰돈이 오가지만 들어온 만큼 나간다. 보증과 동업은 멀리 해라.",
+      love: "질투와 자존심이 앞서는 때다. 이기는 싸움은 없다.",
+      people: "사람 사이에 돈 얘기가 끼면 관계가 상한다.",
+      study: "경쟁이 약이 되는 때다. 목표를 하나 정해 붙어라.",
+      self: "욕심이 커지는 만큼 몸이 먼저 지친다."
+    },
+    "식신": {
+      work: "재주로 먹고사는 길이 열린다. 만들고, 가르치고, 차려라.",
+      money: "벌이는 좋은데 씀씀이도 좋다. 먹는 데로 돈이 샌다.",
+      love: "편안한 사람이 되는 때다. 애교가 무기가 된다.",
+      people: "네가 차린 밥상에 사람이 모인다.",
+      study: "즐겁게 배우는 쪽이 성적이 난다. 억지로는 안 된다.",
+      self: "몸이 편해지는 대신 마음이 느슨해진다. 일 하나는 정해둬라."
+    },
+    "상관": {
+      work: "네 이름으로 나서라. 다만 윗사람과의 말 싸움은 피해라.",
+      money: "재주가 돈이 되는 때다. 단, 말로 사람 잃으면 같이 나간다.",
+      love: "할 말은 다 하는 때다. 그게 솔직함인지 상처인지 구분해라.",
+      people: "말 한마디로 관계가 갈린다. 접을 줄 알아라.",
+      study: "발표·글쓰기·토론에서 빛난다.",
+      self: "표현욕이 올라온다. 안 쓰면 병이 된다."
+    },
+    "편재": {
+      work: "판이 넓어진다. 사람을 통해 기회가 온다.",
+      money: "목돈이 보이는 때다. 다만 지키는 놈이 없으면 다 나간다.",
+      love: "만남이 잦아진다. 진짜와 장난을 구분해라.",
+      people: "인맥이 재산이 되는 때다. 술자리보다 일로 만나야 남는다.",
+      study: "실전이 교재보다 낫다. 현장에서 배워라.",
+      self: "욕심이 앞서는 만큼 밑천을 남겨둬라."
+    },
+    "정재": {
+      work: "착실히 쌓이는 때다. 화려하지 않아도 남는 게 있다.",
+      money: "저축·계약·집 문제에 좋은 때다. 큰 베팅은 어울리지 않는다.",
+      love: "안정으로 가는 때다. 결혼·동거 같은 이야기가 나온다.",
+      people: "좋은 사람이 옆에 남는 때다. 수를 줄여라.",
+      study: "꾸준히 하는 공부가 성과가 되는 때다.",
+      self: "현실 감각이 살아난다. 몸을 챙기기 좋다."
+    },
+    "편관": {
+      work: "압박이 세지는 때다. 버티면 등급이 올라간다.",
+      money: "돈이 급해지는 일이 생긴다. 빚으로 막지 마라.",
+      love: "강한 사람에게 끌린다. 그 강함이 너를 누를 수도 있다.",
+      people: "윗사람과의 관계가 관건이다. 맞서기보다 실력으로 보여라.",
+      study: "시험·자격에 좋은 때다. 몰아치는 힘이 붙는다.",
+      self: "긴장이 몸에 쌓인다. 쉬는 것도 훈련이다."
+    },
+    "정관": {
+      work: "자리가 올라가는 때다. 맡은 일이 곧 명함이 된다.",
+      money: "안정적 수입이 늘어난다. 무리한 확장은 금물.",
+      love: "책임지는 관계로 간다. 가볍게 만나기엔 무거운 때다.",
+      people: "신뢰가 쌓인다. 다만 거절을 못 해서 지친다.",
+      study: "정공법이 통하는 때다. 기본을 다시 잡아라.",
+      self: "남의 기대가 무거워진다. 다 들어주지 마라."
+    },
+    "편인": {
+      work: "혼자 파고드는 일이 성과가 된다. 다만 혼자 다 하지 마라.",
+      money: "눈에 안 보이는 곳에서 새는 돈이 생긴다. 구독·자동결제를 봐라.",
+      love: "혼자 상상하는 때다. 물어봐라, 상대는 모른다.",
+      people: "사람이 줄어도 이상하지 않다. 정리되는 때다.",
+      study: "연구·분석·자격 공부에 최고의 때다.",
+      self: "생각이 많아진다. 몸을 움직여야 머리가 쉰다."
+    },
+    "정인": {
+      work: "배움과 인정이 따라오는 때다. 자격·학위·추천을 챙겨라.",
+      money: "큰돈보다 도움과 지원이 들어온다. 문서를 꼼꼼히 봐라.",
+      love: "보호받는 관계로 간다. 다만 기대가 커지면 실망도 크다.",
+      people: "어른·스승의 도움이 있다. 찾아가서 물어라.",
+      study: "가장 좋은 때다. 배운 걸 남에게 설명하면 완성된다.",
+      self: "마음이 편해진다. 그 편안함을 준비에 써라."
+    }
+  };
+
+  var MASK = {
+    "비겁": "겉보기엔 '자기 주관 확실한 사람'. 말수는 적어도 눈빛이 안 흔들린다.",
+    "식상": "겉보기엔 '재미있는 사람'. 말 잘하고 분위기 살리는 쪽으로 보인다.",
+    "재성": "겉보기엔 '일 잘하는 사람'. 실속 있고 부지런해 보인다.",
+    "관성": "겉보기엔 '반듯한 사람'. 예의 있고 실수 안 할 것 같아 보인다.",
+    "인성": "겉보기엔 '조용히 똑똑한 사람'. 말은 적은데 다 알고 있을 것 같다."
+  };
+  var INNER = {
+    "비겁": "속은 자존심 덩어리다. 무시당했다고 느끼면 오래 기억하고, 지는 걸 못 견딘다.",
+    "식상": "속은 하고 싶은 말이 산더미다. 참고 있는 게 밖에 나가는 것보다 더 피곤하다.",
+    "재성": "속은 계산이 빠르다. 손해 보는 척해도 이미 셈이 끝나 있다.",
+    "관성": "속은 남의 시선으로 가득하다. '남들이 뭐라 할까'가 네 첫 문장이다.",
+    "인성": "속은 생각이 훨씬 많다. 남들은 네가 결정한 줄 아는데, 아직 세 번 더 재고 있다."
+  };
+
+  var STRENGTH_BODY = {
+    "신강": "기운이 넘치는 사주다. 밀어붙이는 힘이 세고, 남에게 기대는 걸 못한다. 대신 자기 안에서 다 해결하려다 혼자 지친다.",
+    "중화": "기운이 어느 쪽으로도 안 쏠린 사주다. 균형이 잡혀 있어서 어디에 놓여도 적응한다. 대신 스스로 '이게 내 길'이라고 정하지 않으면 평생 남이 정해준 자리에 산다.",
+    "신약": "기운을 채워야 하는 사주다. 혼자 버티는 힘보다 주변의 도움으로 크는 쪽이다. 도움을 청하는 걸 못해서 손해를 본다."
+  };
+
+  /* ---------------- 유틸 ---------------- */
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]; }); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function todayISO() { var d = new Date(); return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function toast(msg) {
+    var t = $("#toast");
+    t.textContent = msg; t.classList.add("on");
+    clearTimeout(toast._t); toast._t = setTimeout(function () { t.classList.remove("on"); }, 2100);
+  }
+
+  /* ---------------- 입력 UI ---------------- */
+  var form = {
+    cal: "solar", leap: "0", hour: null, gender: "F", mbti: "",
+    qcat: "self", name: "", qtext: ""
+  };
+
+  function buildChips() {
+    var hc = $("#hourChips"), i, b;
+    for (i = 0; i < 12; i++) {
+      b = document.createElement("button");
+      b.type = "button"; b.className = "chip"; b.dataset.hour = i;
+      b.innerHTML = (SAJU.BRANCH_KO[i] + "시") + " <small>" + SAJU.BRANCH_HOUR[i] + "</small>";
+      hc.appendChild(b);
+    }
+    b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.dataset.hour = "none";
+    b.innerHTML = "모름";
+    hc.appendChild(b);
+
+    var mc = $("#mbtiChips");
+    var types = ["ISTJ", "ISFJ", "INFJ", "INTJ", "ISTP", "ISFP", "INFP", "INTP", "ESTP", "ESFP", "ENFP", "ENTP", "ESTJ", "ESFJ", "ENFJ", "ENTJ"];
+    b = document.createElement("button");
+    b.type = "button"; b.className = "chip on"; b.dataset.mbti = "";
+    b.textContent = "모름";
+    mc.appendChild(b);
+    types.forEach(function (t) {
+      var el = document.createElement("button");
+      el.type = "button"; el.className = "chip"; el.dataset.mbti = t; el.textContent = t;
+      mc.appendChild(el);
+    });
+
+    var qc = $("#qChips");
+    COPY.qcats.forEach(function (q) {
+      var el = document.createElement("button");
+      el.type = "button"; el.className = "chip" + (q.id === "self" ? " on" : "");
+      el.dataset.q = q.id; el.innerHTML = q.icon + " " + q.label;
+      qc.appendChild(el);
+    });
+  }
+
+  function wireChips(containerSel, attr, cb) {
+    $(containerSel).addEventListener("click", function (e) {
+      var btn = e.target.closest(".chip"); if (!btn) return;
+      $$(".chip", $(containerSel)).forEach(function (c) { c.classList.remove("on"); });
+      btn.classList.add("on");
+      cb(btn.dataset[attr]);
+    });
+  }
+
+  function wireSeg(sel, cb) {
+    $(sel).addEventListener("click", function (e) {
+      var btn = e.target.closest("button"); if (!btn) return;
+      $$("button", $(sel)).forEach(function (b) { b.classList.remove("on"); });
+      btn.classList.add("on");
+      cb(btn.dataset.v);
+    });
+  }
+
+  /* ---------------- 검증 & 계산 ---------------- */
+  function readForm() {
+    var y = parseInt($("#fYear").value, 10), m = parseInt($("#fMonth").value, 10), d = parseInt($("#fDay").value, 10);
+    var err = $("#dateErr");
+    err.classList.add("hidden"); err.textContent = "";
+
+    if (!y || !m || !d) { return fail(err, "생년월일을 다 적어라. 그거 없인 아무것도 못 본다."); }
+    if (y < 1900 || y > 2050) { return fail(err, "1900년부터 2050년까지 본다. 그 밖은 할미도 못 본다."); }
+    if (m < 1 || m > 12) { return fail(err, "달은 1월부터 12월까지다."); }
+
+    var solar;
+    if (form.cal === "solar") {
+      if (d < 1 || d > SAJU.daysInMonth(y, m)) { return fail(err, "그 달에 " + d + "일은 없다. 달력을 봐라."); }
+      solar = { y: y, m: m, d: d };
+    } else {
+      if (d < 1 || d > 30) { return fail(err, "음력은 29일이나 30일까지다."); }
+      solar = SAJU.lunarToSolar(y, m, d, form.leap === "1");
+      if (!solar) {
+        return fail(err, form.leap === "1"
+          ? y + "년 " + m + "월에는 윤달이 없다. 평달로 다시 봐라."
+          : "그 날짜는 음력에 없다. 달력을 다시 봐라.");
+      }
+    }
+    var lunar = SAJU.solarToLunar(solar.y, solar.m, solar.d);
+
+    var now = new Date();
+    return {
+      name: $("#fName").value.trim(),
+      calendar: form.cal,
+      leap: form.leap === "1",
+      y: y, m: m, d: d,
+      solar: solar,
+      lunar: lunar,
+      hourBranch: form.hour,
+      gender: form.gender,
+      mbti: form.mbti,
+      qcat: form.qcat,
+      qtext: $("#fQuestion").value.trim(),
+      jasiNextDay: true,
+      now: now
+    };
+  }
+  function fail(errEl, msg) { errEl.textContent = msg; errEl.classList.remove("hidden"); return null; }
+
+  function computeSaju(input) {
+    var s = SAJU.compute({
+      solar: input.solar, lunar: input.lunar, hourBranch: input.hourBranch,
+      gender: input.gender, jasiNextDay: true, now: input.now
+    });
+    s.input = input;
+    return s;
+  }
+
+  /* ---------------- 보고서 텍스트 조각 ---------------- */
+  function topGroups(s) {
+    return Object.keys(s.groupW).map(function (k) { return { k: k, w: s.groupW[k] }; })
+      .sort(function (a, b) { return b.w - a.w; });
+  }
+  function gzText(s, p) { return SAJU.STEMS[p.stem] + SAJU.BRANCHES[p.branch]; }
+
+  function elemBarRow(i, pct, w) {
+    var e = COPY.elems[SAJU.ELEMS[i]];
+    return '<div class="el-row">' +
+      '<div class="el-name">' + e.han + '<small>' + SAJU.ELEMS[i] + '</small></div>' +
+      '<div class="el-track"><div class="el-fill" data-w="' + Math.max(3, pct) + '" style="background:' + e.hex + '"></div></div>' +
+      '<div class="el-val">' + pct.toFixed(1) + '%</div></div>';
+  }
+
+  function chartHTML(s) {
+    var cols = [
+      { key: "year", label: "년주" }, { key: "month", label: "월주" },
+      { key: "day", label: "일주" }, { key: "hour", label: "시주" }
+    ];
+    var head = '<div class="chart-row"><div class="rh"></div>' + cols.map(function (c) {
+      return '<div class="col-head">' + c.label + '</div>';
+    }).join("") + "</div>";
+
+    function row(label, fn, cls) {
+      return '<div class="chart-row ' + (cls || "") + '"><div class="rh">' + label + "</div>" +
+        cols.map(function (c, idx) {
+          var p = s.pillars[c.key];
+          return '<div class="' + (idx === 2 ? "day-col" : "") + '">' + fn(p, c.key) + "</div>";
+        }).join("") + "</div>";
+    }
+    var stemRow = row("천간", function (p) {
+      if (!p) return '<span class="gz" style="color:#4e4739">—</span>';
+      var e = COPY.elems[SAJU.STEMS ? SAJU.ELEMS[SAJU.STEM_ELEM[p.stem]] : ""];
+      return '<span class="gz">' + SAJU.STEMS[p.stem] + '<small>' + SAJU.STEM_KO[p.stem] + "·" + SAJU.ELEMS[SAJU.STEM_ELEM[p.stem]] + "</small></span>";
+    }, "stem-row");
+    var branchRow = row("지지", function (p) {
+      if (!p) return '<span class="gz" style="color:#4e4739">—</span>';
+      return '<span class="gz">' + SAJU.BRANCHES[p.branch] + '<small>' + SAJU.BRANCH_KO[p.branch] + "·" + SAJU.ELEMS[SAJU.BRANCH_ELEM[p.branch]] + "</small></span>";
+    }, "branch-row");
+    var tenRow = row("십신", function (p, key) {
+      if (!p) return '<span class="el">—</span>';
+      var t = key === "day" ? "일간" : s.chars.filter(function (c) { return c.pos === ({ year: "년", month: "월", hour: "시" })[key]; })[0].ten;
+      return '<span class="el">' + t + "</span>";
+    });
+    return '<div class="chart">' + head + stemRow + branchRow + tenRow + "</div>";
+  }
+
+  function strengthBox(s) {
+    return '<div class="note"><h4>' + s.strength.label + " · " + s.strength.pct + "%</h4><p>" +
+      STRENGTH_BODY[s.strength.label] + "</p></div>";
+  }
+
+  /* ================= 챕터 1 ================= */
+  function ch1(s) {
+    var stem = COPY.stems[s.pillars.day.stem];
+    var strongest = s.elemRank[0], weakest = s.elemRank[4];
+    var over = COPY.elems[SAJU.ELEMS[strongest.i]];
+    var under = COPY.elems[SAJU.ELEMS[weakest.i]];
+
+    var h = "";
+    h += '<p class="lead">네 여덟 글자는 이렇게 생겼다. <b>' + gzText(s, s.pillars.year) + "년 " + gzText(s, s.pillars.month) + "월 " + gzText(s, s.pillars.day) + "일" +
+      (s.pillars.hour ? " " + gzText(s, s.pillars.hour) + "시" : "") + "</b>" +
+      (s.pillars.hour ? "." : ". 시주는 빼고 여섯 글자로 본다.") + "</p>";
+    h += chartHTML(s);
+    h += '<p class="chart-note">만세력 기준 — 해는 입춘, 달은 절기로 바꾼다. 일주는 밤 11시(자시)에 다음 날로 넘어간다. ' +
+      (s.input.calendar === "lunar" ? "음력 " + s.input.y + "년 " + s.input.m + "월 " + s.input.d + "일" + (s.input.leap ? "(윤달)" : "") + "을 양력 " + s.solar.y + "년 " + s.solar.m + "월 " + s.solar.d + "일로 바꿔서 봤다." : "양력 " + s.solar.y + "년 " + s.solar.m + "월 " + s.solar.d + "일.") + "</p>";
+
+    h += '<p class="body">네 일간은 <b>' + stem.ko + "(" + stem.han + ")</b> — " + stem.img + "다. 오행으로는 <em>" + SAJU.ELEMS[s.dayMaster.elem] + "</em>이고 " + (s.dayMaster.yang ? "양(陽)" : "음(陰)") + "의 기운이다. 이 한 글자가 네 중심이고, 나머지 " + (s.pillars.hour ? "일곱" : "다섯") + " 글자는 이 중심에 붙은 살이다.</p>";
+
+    h += '<div class="note"><h4>' + stem.han + " · " + stem.ko + "</h4><p>" + stem.body[0] + "</p></div>";
+    h += '<p class="body">' + stem.body[1] + "</p>";
+    h += '<div class="note warn"><h4>할미가 짚는 흠</h4><p>' + stem.shadow + "</p></div>";
+    h += '<div class="note warm"><h4>그래도 이건 지켜라</h4><p>' + stem.care + "</p></div>";
+
+    h += '<p class="body">이제 오행을 보자. 여덟 글자를 무게로 따져본 표다.</p>';
+    h += '<div class="el-block">' + [0, 1, 2, 3, 4].map(function (i) { return elemBarRow(i, s.elemPct[i], s.elemW[i]); }).join("") +
+      '<div class="el-legend"><span>木 목</span><span>火 화</span><span>土 토</span><span>金 금</span><span>水 수</span></div></div>';
+
+    h += '<p class="body"><b>' + SAJU.ELEMS[strongest.i] + "(" + over.han + ")</b> 기운이 제일 세다(" + strongest.pct.toFixed(1) + "%). " + over.over + "</p>";
+    h += '<p class="body"><b>' + SAJU.ELEMS[weakest.i] + "(" + under.han + ")</b> 기운이 제일 얇다(" + weakest.pct.toFixed(1) + "%). " + under.under + "</p>";
+    h += strengthBox(s);
+
+    var ilji = COPY.branches[s.pillars.day.branch];
+    h += '<p class="body">그리고 네 일지가 <b>' + ilji.ko + "(" + ilji.han + "·" + ilji.animal + ")</b>다. " + ilji.text + " 이 자리가 네 속마음이고, 배우자 자리다. 뒤에서 또 나온다.</p>";
+    return h;
+  }
+
+  /* ================= 챕터 2 ================= */
+  function ch2(s) {
+    var tops = s.tenList.slice(0, 3).filter(function (t) { return t.w > 0; });
+    var h = "";
+    h += '<p class="lead">팔자를 보면 <b>' + tops[0].name + "</b>이 제일 목소리가 크다. " + COPY.tenGods[tops[0].name].tag + ". 이놈이 네 인생을 끌고 간다.</p>";
+
+    h += '<div class="ten-grid">' + s.tenList.map(function (t, ti) {
+      return '<div class="ten-cell' + (ti < 3 ? " hot" : "") + (t.w === 0 ? " zero" : "") + '">' +
+        '<span class="n">' + t.name + '</span><span class="v">' + (t.w === 0 ? "–" : t.pct.toFixed(0) + "%") + "</span></div>";
+    }).join("") + "</div>";
+    h += '<p class="chart-note tight">십신은 일간(너)을 기준으로 나머지 글자가 무슨 관계인지 정리한 것이다. 퍼센트는 오행 무게를 그대로 쓴 값이다.</p>';
+
+    tops.forEach(function (t, idx) {
+      var c = COPY.tenGods[t.name];
+      h += '<div class="note"><h4>' + (idx === 0 ? "첫째" : idx === 1 ? "둘째" : "셋째") + " · " + t.name + " " + c.han + " — " + c.tag + "</h4><p>" + c.body[0] + "</p></div>";
+      h += '<p class="body">' + c.body[1] + "</p>";
+      h += '<p class="body"><b>어두운 면.</b> ' + c.shadow + "</p>";
+      if (idx === 0) h += '<div class="note warm"><h4>할미의 처방</h4><p>' + c.care + "</p></div>";
+    });
+
+    var g1 = tops[0].group, g2 = tops[1] ? tops[1].group : null;
+    h += '<p class="lead">이 둘이 만나면 <b>' + (g2 && g2 !== g1 ? g1 + "·" + g2 + " 조합" : g1 + " 단독") + "</b>이 된다.</p>";
+    h += '<p class="body"><b>' + COPY.groups[g1].name + "(" + COPY.groups[g1].han + ") — " + COPY.groups[g1].line + ".</b> " + COPY.groups[g1].text + "</p>";
+    if (g2 && g2 !== g1) h += '<p class="body"><b>' + COPY.groups[g2].name + "(" + COPY.groups[g2].han + ") — " + COPY.groups[g2].line + ".</b> " + COPY.groups[g2].text + "</p>";
+    h += '<p class="body">' + comboText(s, g1, g2) + "</p>";
+    return h;
+  }
+
+  function comboText(s, g1, g2) {
+    var map = {
+      "비겁": "네 몫을 지키는 데 강하고, 남의 몫을 빼앗기는 싫어한다",
+      "식상": "하고 싶은 걸 말하고 만들어서 밖으로 내놓는다",
+      "재성": "결과와 실속을 본다. 손에 쥐는 게 있어야 안심한다",
+      "관성": "책임과 규율로 자기를 잡는다. 남에게도 그 잣대를 댄다",
+      "인성": "받아들이고 생각한다. 결론보다 이해가 먼저다"
+    };
+    var t1 = map[g1], t2 = g2 ? map[g2] : "";
+    if (!g2 || g1 === g2) {
+      return "그래서 너는 " + t1 + ". 이 한 가지가 너무 세면 다른 게 안 보인다. 약한 쪽 기운을 일부러 쓰는 연습을 해라. 그게 네 팔자의 균형이다.";
+    }
+    return "그래서 너는 " + t1 + ". 그런데 동시에 " + t2 + ". 이 둘이 서로 당길 때 네 속이 제일 시끄럽다. 결정이 늦는 건 우유부단해서가 아니라, 두 목소리가 다 맞아서다. 그럴 땐 <b>몸이 먼저 움직이는 쪽</b>을 골라라. 머리는 나중에 따라온다.";
+  }
+
+  /* ================= 챕터 3 ================= */
+  function socialPct(s) {
+    var g = s.groupW, tot = 0, i;
+    for (i in g) tot += g[i];
+    var v = 50 + (g["식상"] - tot * 0.2) * 0.9 + (g["관성"] - tot * 0.15) * 0.7 +
+      (g["비겁"] - tot * 0.25) * 0.9 - (g["인성"] - tot * 0.2) * 0.8;
+    return Math.max(14, Math.min(97, Math.round(v)));
+  }
+
+  function ch3(s) {
+    var tg = topGroups(s);
+    var maskGroup = (function () {
+      var prefer = ["식상", "관성", "비겁", "재성", "인성"];
+      for (var i = 0; i < prefer.length; i++) if (s.groupW[prefer[i]] > 0 && prefer[i] === tg[0].k) return prefer[i];
+      return tg[0].k;
+    })();
+    var pct = socialPct(s);
+    var mbti = s.input.mbti ? COPY.mbti[s.input.mbti] : "";
+    var ilji = COPY.branches[s.pillars.day.branch];
+
+    var h = "";
+    h += '<p class="lead">사람들 앞에선 웃는데 집에 오면 한숨이 나오는 이유. 그 간격을 여기서 벌려놓고 보자.</p>';
+
+    h += '<div class="gauge-wrap"><div class="gauge-top"><span>사회성 레벨</span><b>' + pct + "%</b></div>" +
+      '<div class="gauge"><div class="gauge-fill" data-w="' + pct + '"></div></div>' +
+      '<div class="gauge-scale"><span>혼자가 편함</span><span>무리 안이 편함</span></div></div>';
+
+    h += '<p class="body">' + gaugeText(pct, s) + "</p>";
+
+    h += '<div class="note"><h4>남들이 보는 너</h4><p>' + MASK[maskGroup] + "</p></div>";
+    var innerKey = (function () {
+      var order = ["인성", "비겁", "관성", "재성", "식상"];
+      var best = tg[0].k;
+      return s.groupW[best] > 0 ? best : "인성";
+    })();
+    h += '<div class="note warm"><h4>진짜 속마음</h4><p>' + INNER[innerKey] + "</p></div>";
+    h += '<p class="body">네 일지 <b>' + ilji.animal + "(" + ilji.han + ")</b> 자리가 이걸 더 정확하게 말해준다. " + ilji.text + "</p>";
+
+    if (mbti) {
+      h += '<div class="note"><h4>' + s.input.mbti + " — 그리고 사주는 이렇게 말한다</h4><p>" + mbti + "</p></div>";
+      h += '<p class="body">' + mbtiBridge(s) + "</p>";
+    } else {
+      h += '<p class="body">MBTI를 안 적었으니 사주만으로 말한다. ' + mbtiBridge(s) + "</p>";
+    }
+
+    h += '<p class="lead">그래서 사람 사이에서 이렇게 굴면 된다.</p>';
+    h += '<p class="body">' + relationTip(s) + "</p>";
+    return h;
+  }
+
+  function gaugeText(pct, s) {
+    if (pct >= 72) return "너는 사람 많은 자리에서 충전되는 쪽이다. 말이 트이고 표정이 살아난다. 다만 그 자리에서 다 퍼주고 집에 와서 텅 비는 날이 많다. <b>한 번 모임에 한 번은 조용히 있어라.</b> 그게 네 에너지를 지킨다.";
+    if (pct >= 50) return "무리에도 있고 혼자도 있는 사람이다. 어느 쪽이든 한나절은 견딘다. 문제는 그게 <b>'어중간'</b>이라는 것. 무리에선 혼자가 편하고, 혼자선 누가 보고 싶다.";
+    if (pct >= 30) return "혼자가 익숙한 사람이다. 사람들 사이에선 잘 웃지만, 집에 돌아오면 한숨이 나온다. 네가 사람을 싫어하는 게 아니라 <b>사람에게 쓰는 힘이 비싼 것</b>이다. 그 힘을 아껴 써라.";
+    return "혼자인 시간이 곧 네 밥이고 물이다. 사람 많은 자리는 반나절이 한계다. 그런데 네 팔자는 사람 복으로 먹고사는 쪽이라, <b>적은 사람과 깊게</b> 가야 한다. 넓히려 들면 다 잃는다.";
+  }
+
+  function mbtiBridge(s) {
+    var g = s.groupW, top = s.tenList[0].name;
+    var lead = {
+      "비겁": "네 팔자는 '내가 결정한다'가 기본값이다",
+      "겁재": "네 팔자는 '내가 이긴다'가 기본값이다",
+      "식신": "네 팔자는 '내가 만들어서 낸다'가 기본값이다",
+      "상관": "네 팔자는 '내가 말한다'가 기본값이다",
+      "편재": "네 팔자는 '내가 벌인다'가 기본값이다",
+      "정재": "네 팔자는 '내가 모은다'가 기본값이다",
+      "편관": "네 팔자는 '내가 버틴다'가 기본값이다",
+      "정관": "네 팔자는 '내가 지킨다'가 기본값이다",
+      "편인": "네 팔자는 '내가 본다'가 기본값이다",
+      "정인": "네 팔자는 '내가 배운다'가 기본값이다"
+    }[top];
+    return lead + ". 그 기본값이 네 성격 유형의 장점과 정확히 겹치는 자리가 있고, 하필 제일 자주 부딪히는 자리도 거기다. 네가 남에게 설명을 많이 하는 이유도, 설명이 통하지 않을 때 제일 화가 나는 이유도 여기 있다.";
+  }
+
+  function relationTip(s) {
+    var tips = [];
+    if (s.groupW["관성"] >= 2) tips.push("네 팔자는 <b>남의 기대를 먼저 계산한다</b>. 부탁을 받으면 '싫다'가 목에 걸린다. 한 번은 '생각해볼게'라고만 말해봐라. 그것만으로 반은 산다.");
+    if (s.groupW["식상"] >= 2) tips.push("말이 무기인 팔자다. 칭찬은 정확하게, 지적은 한 번만. 네가 두 번 말하면 상대는 공격으로 받는다.");
+    if (s.groupW["인성"] >= 2) tips.push("혼자 결론 내리는 버릇을 고쳐라. 네가 세 번 생각한 걸 상대는 한 번도 못 들었다. 물어보고 확인해라.");
+    if (s.groupW["비겁"] >= 2) tips.push("지는 걸 못 견디는 팔자다. 사람과의 싸움에서 이기는 방법은 하나뿐이다 — 그 싸움을 안 하는 것.");
+    if (s.groupW["재성"] >= 2) tips.push("사람에게 쓸 돈과 잃을 돈을 구분해라. 네 씀씀이는 좋은데, 그게 관계를 사는 데 쓰이면 나중에 청구서가 온다.");
+    if (!tips.length) tips.push("네 팔자는 어느 한쪽으로 치우치지 않았다. 그래서 사람마다 맞춰주다가 정작 너를 모르는 사람이 많다. 한 번은 네 얘기를 먼저 꺼내라.");
+    return tips.join(" ");
+  }
+
+  /* ================= 챕터 4 ================= */
+  function currentDaewoon(s) {
+    var age = ageNow(s.input.solar);
+    var dw = s.daewoon;
+    if (!dw.list.length) return null;
+    if (age < dw.list[0].startAge) return { pre: true, age: age, next: dw.list[0] };
+    for (var i = 0; i < dw.list.length; i++) {
+      if (age >= dw.list[i].startAge && age <= dw.list[i].endAge) return { cur: dw.list[i], age: age, idx: i };
+    }
+    return { cur: dw.list[dw.list.length - 1], age: age };
+  }
+
+  function ageNow(birth) {
+    var n = new Date();
+    var a = n.getFullYear() - birth.y;
+    var m = n.getMonth() + 1 - birth.m;
+    if (m < 0 || (m === 0 && n.getDate() < birth.d)) a--;
+    return a;
+  }
+
+  function ch4(s) {
+    var dw = s.daewoon, cur = currentDaewoon(s);
+    var h = "";
+    h += '<p class="lead">네 대운은 <b>' + (dw.forward ? "앞으로" : "뒤로") + "</b> 흐른다. " + dw.startText + "부터 10년씩, 인생이 아홉 번 갈아엎힌다는 뜻이다.</p>";
+    h += '<p class="body">대운은 사주 위에 얹히는 때의 기운이다. 같은 사람도 어느 대운에 있느냐에 따라 같은 일이 복이 되고 화가 된다. 아래 카드를 옆으로 넘겨라. 지금 네가 서 있는 자리를 금색으로 표시했다.</p>';
+
+    h += '<div class="dw-scroll">';
+    dw.list.forEach(function (d) {
+      var isNow = cur && cur.cur && cur.cur.n === d.n;
+      h += '<div class="dw-card' + (isNow ? " now" : "") + '">' +
+        '<div class="age">' + d.startAge + "–" + d.endAge + "세" + (isNow ? " · 지금" : "") + "</div>" +
+        '<div class="gj">' + d.ganji + "</div>" +
+        '<div class="tg">' + d.tenStem + " · " + d.tenBranch + "</div>" +
+        '<div class="bar"><i data-w="' + (isNow ? 100 : 26) + '"></i></div>' +
+        '<div class="txt">' + dwShort(d) + "</div></div>";
+    });
+    h += "</div>";
+
+    if (cur && cur.cur) {
+      var c = cur.cur;
+      h += '<div class="note"><h4>지금 네가 서 있는 자리 — ' + c.ganji + " 대운 (" + c.startAge + "–" + c.endAge + "세)</h4><p>" +
+        "이 10년은 <b>" + c.tenStem + "</b>의 기운으로 열린다. " + DW_TEXT[c.tenStem].work +
+        " " + DW_TEXT[c.tenStem].money + "</p></div>";
+    } else if (cur && cur.pre) {
+      h += '<div class="note"><h4>아직 첫 대운 전이다</h4><p>대운이 열리기 전에는 부모·집안의 기운을 그대로 받고 산다고 본다. ' + cur.next.ganji + " 대운이 " + cur.next.startAge + "세에 열린다. 그때부터 네 인생의 판이 본격적으로 바뀐다.</p></div>";
+    }
+
+    /* 질문 처방 */
+    var q = s.input.qcat || "self";
+    var ans = COPY.answers[q] || COPY.answers.self;
+    var map = substitution(s, cur);
+    h += '<p class="lead">' + esc(ans.title) + " — " + (s.input.qtext ? '"' + esc(s.input.qtext) + '"' : "네가 고른 그 질문") + "</p>";
+    ans.paras.forEach(function (p) { h += '<p class="body">' + fill(p, map) + "</p>"; });
+
+    if (s.input.qtext) {
+      h += '<div class="note warm"><h4>그 말에 한마디 더</h4><p>' + qtextReply(s, cur) + "</p></div>";
+    }
+    return h;
+  }
+
+  function dwShort(d) {
+    var t = DW_TEXT[d.tenStem];
+    return t ? t.self : "";
+  }
+
+  function dwDetail(d) {
+    var t = DW_TEXT[d.tenStem];
+    return t ? t.self : "";
+  }
+
+  function substitution(s, cur) {
+    var st = s.pillars.day.stem;
+    var dwName = cur && cur.cur ? cur.cur.ganji : (cur && cur.pre ? "첫 대운 전" : "대운");
+    var dTen = cur && cur.cur ? cur.cur.tenStem : s.tenList[0].name;
+    var dt = DW_TEXT[dTen] || DW_TEXT[s.tenList[0].name];
+    var se = s.saeun;
+    var weakest = COPY.elems[SAJU.ELEMS[s.elemRank[4].i]];
+    var ilji = COPY.branches[s.pillars.day.branch];
+
+    var studyMap = {
+      "신강": "밀어붙이는 힘으로 하는 쪽이다. 단기 승부에 강하고 장기전에 약하다",
+      "중화": "어디에나 맞출 수 있는 쪽이다. 대신 스스로 목표를 정해야 한다",
+      "신약": "혼자 오래 앉아 있는 게 힘들다. 같이 하는 공부가 훨씬 잘 된다"
+    };
+
+    return {
+      "A": s.strength.label,
+      "A_BODY": STRENGTH_BODY[s.strength.label],
+      "D": "<b>" + dwName + "</b>",
+      "D_WORK": dt.work,
+      "D_MONEY": dt.money,
+      "D_LOVE": dt.love,
+      "D_PEOPLE": dt.people,
+      "D_STUDY": dt.study,
+      "D_SELF": dt.self,
+      "S": "<b>" + SAJU.STEMS[se.stem] + SAJU.BRANCHES[se.branch] + "</b>년 " + se.ten,
+      "S_HEALTH": se.ten + " 기운이 도는 해라 몸이 " + (["편관", "정관", "겁재"].indexOf(se.ten) >= 0 ? "긴장으로 굳는다" : "느슨해진다") + ".",
+      "TOP1": s.tenList[0].name,
+      "TOP1_TAG": COPY.tenGods[s.tenList[0].name].tag,
+      "ILJI": ilji.ko + "(" + ilji.animal + ")",
+      "ILJI_TEXT": ilji.text,
+      "MASK": MASK[topGroups(s)[0].k],
+      "INNER": INNER[topGroups(s)[1] ? topGroups(s)[1].k : topGroups(s)[0].k],
+      "WEAK": weakest.han + " " + SAJU.ELEMS[s.elemRank[4].i],
+      "WEAK_BODY": weakest.under,
+      "STUDY": studyMap[s.strength.label]
+    };
+  }
+
+  function fill(text, map) {
+    return text.replace(/\{(\w+)\}/g, function (m, k) { return map[k] != null ? map[k] : m; });
+  }
+
+  function qtextReply(s, cur) {
+    var s1 = s.tenList[0].name, s2 = s.tenList[1] ? s.tenList[1].name : s1;
+    var lines = [
+      "네가 적은 그 말, 할미가 읽었다. 한마디로 줄이면 — <b>네 사주는 이미 움직이고 있다.</b> " + s1 + "이 끌고 " + s2 + "이 받치는 구조라, 조급해하면 정작 필요한 걸 놓친다.",
+      "그 말을 하루에 세 번 이상 생각하면 그건 고민이 아니라 습관이다. 습관은 사주가 아니라 네가 고칠 수 있다. 오늘 하나만 바꿔라."
+    ];
+    return lines[0] + " " + lines[1];
+  }
+
+  /* ================= 챕터 5 ================= */
+  function ch5(s) {
+    var weakestI = s.elemRank[4].i, weakest = COPY.elems[SAJU.ELEMS[weakestI]];
+    var strongestI = s.elemRank[0].i, strongest = COPY.elems[SAJU.ELEMS[strongestI]];
+    var lucky = luckyNumbers(s);
+    var h = "";
+
+    h += '<p class="lead">여기까지가 네 팔자고, 여기부터가 네 몫이다. 사주는 못 고쳐도 <b>판은 고칠 수 있다.</b> 그게 개운이다.</p>';
+
+    h += '<div class="note warn"><h4>먼저 쓴소리</h4><p>' + scold(s) + "</p></div>";
+
+    h += '<p class="lead">부족한 기운을 채우는 법 — ' + SAJU.ELEMS[weakestI] + "(" + weakest.han + ")</p>";
+    h += '<p class="body">' + weakest.under + " 이 기운을 일부러 만나러 다녀라. 미신이 아니라, 네가 안 가던 데를 가면 안 하던 선택을 하게 된다는 뜻이다.</p>";
+    h += '<div class="duo">' +
+      wx("색", weakest.color, "옷이나 소품에 이 색을 하나") +
+      wx("맛", weakest.taste, "이 맛이 나는 걸 일주일에 두 번") +
+      wx("자리", weakest.place, "여기서 보내는 시간이 약이다") +
+      wx("습관", weakest.habit, "이거 하나만 30일") +
+      "</div>";
+
+    h += '<p class="body">반대로 <b>' + SAJU.ELEMS[strongestI] + "(" + strongest.han + ")</b>이 너무 세다. 그 기운이 시키는 대로만 하면 같은 자리에서 또 넘어진다. " + strongest.over + "</p>";
+
+    h += '<div class="note"><h4>행운의 색 · 숫자 · 방향</h4><p>' +
+      "<span class='sw' style='background:" + weakest.hex + "'></span><b>색 " + weakest.color + "</b> — 옷깃이나 소품에 하나. " +
+      "숫자 <b>" + weakest.num + "</b>, 방향 <b>" + weakest.dir + "</b>. 큰 결정을 할 때 이 숫자가 들어간 날짜나 이 방향 자리를 고르면 마음이 덜 흔들린다. 계절로는 " + weakest.season + "에 네 기운이 차오른다.</p></div>";
+
+    h += '<p class="lead">올해와 오늘</p>';
+    h += '<div class="duo">' +
+      '<div class="wx"><div class="g">' + SAJU.STEMS[s.saeun.stem] + SAJU.BRANCHES[s.saeun.branch] + '</div><div class="t"><small>올해의 기운 · ' + s.saeun.year + "년</small>" + yearText(s) + "</div></div>" +
+      '<div class="wx"><div class="g">' + SAJU.STEMS[s.today.stem] + SAJU.BRANCHES[s.today.branch] + '</div><div class="t"><small>오늘의 기운 · ' + s.today.date.m + "월 " + s.today.date.d + "일</small>" + todayText(s) + "</div></div>" +
+      "</div>";
+
+    h += '<p class="body">' + closingWord(s) + "</p>";
+    return h;
+  }
+
+  function wx(label, value, note) {
+    return '<div class="wx"><div class="g" style="font-family:var(--serif);font-size:15px;min-width:44px;color:var(--gold-2)">' + label + "</div>" +
+      '<div class="t"><b style="color:var(--paper)">' + value + "</b> — " + note + "</div></div>";
+  }
+
+  function luckyNumbers(s) {
+    var e = COPY.elems[SAJU.ELEMS[s.elemRank[4].i]];
+    return { num: e.num, dir: e.dir };
+  }
+
+  function scold(s) {
+    var g = s.groupW, top = s.tenList[0].name;
+    var lines = [];
+    if (g["인성"] >= 2) lines.push("생각만 하고 안 하는 병이 있다. 머릿속에서 열 번 이긴 걸 세상에선 아직 한 번도 안 했다.");
+    if (g["비겁"] >= 2) lines.push("자존심이 밥 먹여주는 줄 안다. 밥은 네가 벌어야 먹는 거다.");
+    if (g["식상"] >= 2) lines.push("말로 다 해버려서 남는 게 없다. 하고 나서 후회하는 그 속도만 줄여도 인생이 달라진다.");
+    if (g["관성"] >= 2) lines.push("남 좋은 사람 노릇하다 네 몫을 잃는다. 거절 한 번 못 해서 몇 년을 갔다.");
+    if (g["재성"] >= 2) lines.push("돈을 벌 줄 알지 지킬 줄 모른다. 통장 하나는 손이 안 닿게 해둬라.");
+    if (!lines.length) lines.push("딱히 흠잡을 데가 없어 보이지? 그게 흠이다. 너는 늘 무난한 쪽을 골라서 아무 일도 안 일어난다.");
+    var extra = {
+      "비견": " 그리고 남이 널 어떻게 보든, 네 인생은 네가 책임진다. 그 말을 이제는 행동으로 해라.",
+      "겁재": " 그리고 조급한 승부는 한 번 이기고 열 번 잃는다. 그 계산은 네가 더 잘할 거다.",
+      "식신": " 그리고 편하게 살고 싶은 마음, 알겠다. 근데 편한 게 심심해지면 또 뭘 벌인다. 그거 반복이다.",
+      "상관": " 그리고 맞는 말을 하는 것과 이기는 것은 다르다. 그걸 아직도 헷갈린다.",
+      "편재": " 그리고 큰돈 앞에서 손이 떨리면 일단 하루 재워라. 하루만 재워도 안 하는 게 절반이다.",
+      "정재": " 그리고 안전한 것만 고르다 보면 결국 아무것도 안 남는다. 한 번은 판에 올라가봐라.",
+      "편관": " 그리고 아픈 것도 참는 게 용감한 줄 안다. 병원 가는 게 더 용감하다.",
+      "정관": " 그리고 남이 널 어떻게 보는지가 네 첫 번째 기준이면, 평생 남의 인생을 산다.",
+      "편인": " 그리고 안 꺼낸 생각은 세상에 없는 생각이다. 너만 알고 있으면 아무 일도 일어나지 않는다.",
+      "정인": " 그리고 준비만 하다가 때를 놓친다. 이제는 시작하고 나서 배워라."
+    }[top];
+    return lines[0] + extra;
+  }
+
+  function yearText(s) {
+    var se = s.saeun, t = {
+      "비견": "내 힘으로 서야 하는 해. 남 눈치보다 네 일 하나를 끝내라.",
+      "겁재": "판이 커지고 경쟁이 붙는 해. 베팅은 작게, 동업은 미뤄라.",
+      "식신": "네 재주가 밖으로 나오는 해. 만들고, 가르치고, 차려라.",
+      "상관": "말과 글이 힘이 되는 해. 다만 윗사람과의 말 싸움은 피해라.",
+      "편재": "기회가 사람을 타고 오는 해. 지킬 그릇을 먼저 만들어라.",
+      "정재": "쌓이는 해. 눈에 안 띄어도 남는 게 있다. 계약·저축에 좋다.",
+      "편관": "압박이 세지는 해. 버티면 등급이 오른다. 몸을 먼저 챙겨라.",
+      "정관": "자리가 오르는 해. 책임이 늘고 명함이 바뀐다.",
+      "편인": "혼자 파고드는 해. 정리하고 버릴 것을 버려라.",
+      "정인": "배우고 인정받는 해. 자격·문서·추천을 챙겨라."
+    }[se.ten];
+    return t + " (" + se.ten + "의 해)";
+  }
+
+  function todayText(s) {
+    var ten = s.today.ten;
+    var t = {
+      "비견": "오늘은 내 일부터. 남 부탁은 내일 들어라.",
+      "겁재": "돈 나갈 일이 숨어 있다. 지갑을 한 번 더 봐라.",
+      "식신": "입이 즐거운 날. 누구에게 밥 한 끼 사도 좋다.",
+      "상관": "말조심. 오늘 한마디가 오래 남는다.",
+      "편재": "사람 만나기 좋은 날. 다만 계산서는 각자.",
+      "정재": "정리하고 정산하기 좋은 날. 미룬 서류를 꺼내라.",
+      "편관": "긴장되는 일이 온다. 미루지 말고 아침에 해치워라.",
+      "정관": "예의가 힘이 되는 날. 윗사람에게 연락해도 좋다.",
+      "편인": "혼자 있으면 답이 보인다. 다만 밤은 짧게.",
+      "정인": "배우기 좋은 날. 물어볼 사람에게 물어봐라."
+    }[ten];
+    return t;
+  }
+
+  function vocative(name) {
+    if (!name) return "이 녀석아";
+    var c = name.charCodeAt(name.length - 1);
+    if (c >= 0xAC00 && c <= 0xD7A3) return name + (((c - 0xAC00) % 28) ? "아" : "야");
+    return name + "아";
+  }
+
+  function closingWord(s) {
+    var name = vocative(s.input.name);
+    return name + " — <b>사주는 네가 어디서 왔는지 알려주는 지도다. 어디로 갈지는 지도에 안 적혀 있다.</b> 그건 네 몫이다. 할미가 이만큼 짚어줬으니, 이제 네가 한 걸음만 옮겨라. 한 걸음이면 된다. 열 걸음은 무서워서 아무도 못 뗀다.";
+  }
+
+  /* ================= 헤드 / 엔드 ================= */
+  function headHTML(s) {
+    var inp = s.input;
+    var hourLabel = inp.hourBranch === null ? "시 모름" : SAJU.BRANCH_KO[inp.hourBranch] + "시 (" + SAJU.BRANCH_HOUR[inp.hourBranch] + ")";
+    var nameLine = inp.name ? '<span>' + esc(inp.name) + "</span> 님의 팔자" : "이름 없는 손님의 팔자";
+    return '<p class="brand">팔자 한 그릇 · 命</p>' +
+      '<h1 class="who">' + nameLine + "</h1>" +
+      '<div class="meta-line">' +
+      (inp.calendar === "lunar" ? "음력 " + inp.y + "." + inp.m + "." + inp.d + (inp.leap ? "(윤)" : "") + " → 양력 " + s.solar.y + "." + s.solar.m + "." + s.solar.d
+        : "양력 " + s.solar.y + "." + s.solar.m + "." + s.solar.d) + " · " + hourLabel + " · " + (inp.gender === "F" ? "여성" : "남성") +
+      "<br><b>" + s.ganjiText.year + "년 " + s.ganjiText.month + "월 " + s.ganjiText.day + "일" + (s.pillars.hour ? " " + s.ganjiText.hour + "시" : "") + "</b>" +
+      (s.lunar && inp.calendar === "solar" ? " · 음력 " + s.lunar.y + "." + s.lunar.m + "." + s.lunar.d + (s.lunar.leap ? "(윤)" : "") : "") +
+      "</div>" +
+      '<div class="scroll-cue">아래로 내려라 · 다섯 코스</div>';
+  }
+
+  function endCardHTML() {
+    return '<div class="seal">壽</div>' +
+      "<p>여기까지가 할미 그릇이다.<br>다 먹었으면 이제 네가 살아야지.</p>" +
+      '<div class="end-actions">' +
+      '<button class="btn-s" data-act="save">❖ 저장하기</button>' +
+      '<button class="btn-s" data-act="vault">보관함</button>' +
+      '<button class="btn-s" data-act="new">↺ 새로 보기</button>' +
+      "</div>";
+  }
+
+  /* ================= 렌더 ================= */
+  function renderReport(input) {
+    state.input = input;
+    var s = computeSaju(input);
+    state.saju = s;
+    state.chapter = 0;
+    state.savedId = null;
+
+    $("#reportHead").innerHTML = headHTML(s);
+    var bodies = [ch1(s), ch2(s), ch3(s), ch4(s), ch5(s)];
+    $("#chapters").innerHTML = bodies.map(function (body, i) {
+      var t = COPY.chapterTitles[i];
+      return '<section class="chapter" id="ch' + i + '" data-i="' + i + '">' +
+        '<p class="chapter-no">CHAPTER ' + t.no + "</p>" +
+        "<h2>" + t.title + "</h2>" +
+        '<p class="kicker">' + t.kicker + "</p>" + body + "</section>";
+    }).join("");
+    $("#endCard").innerHTML = endCardHTML();
+
+    $("#formScreen").classList.add("hidden");
+    $("#report").classList.remove("hidden");
+    $("#nav").classList.remove("hidden");
+    window.scrollTo(0, 0);
+
+    requestAnimationFrame(function () {
+      $$(".chapter").forEach(function (c) { c.classList.add("in"); });
+      setTimeout(function () {
+        $$(".el-fill").forEach(function (f) { f.style.width = f.dataset.w + "%"; });
+        $$(".gauge-fill").forEach(function (f) { f.style.width = f.dataset.w + "%"; });
+        $$(".dw-card .bar i").forEach(function (f) { f.style.width = f.dataset.w + "%"; });
+        var now = $(".dw-card.now"), sc = $(".dw-scroll");
+        if (now && sc) sc.scrollLeft = Math.max(0, now.offsetLeft - 24);
+      }, 120);
+    });
+
+    buildToc();
+    observeChapters();
+    updateNav();
+  }
+
+  function buildToc() {
+    var ul = $("#tocList");
+    ul.innerHTML = COPY.chapterTitles.map(function (t, i) {
+      return '<li><button data-jump="' + i + '"><span class="n">' + t.no + '</span><span class="t">' + t.title + '</span><span class="c">보기</span></button></li>';
+    }).join("");
+  }
+
+  function observeChapters() {
+    var secs = $$(".chapter");
+    if (!("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var i = parseInt(e.target.dataset.i, 10);
+          if (i !== state.chapter) { state.chapter = i; updateNav(); }
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
+    secs.forEach(function (s) { io.observe(s); });
+  }
+
+  function updateNav() {
+    var n = state.chapter;
+    $("#navPrev").disabled = n <= 0;
+    $("#navNext").disabled = n >= 4;
+    $$("#tocList button").forEach(function (b) {
+      b.classList.toggle("cur", parseInt(b.dataset.jump, 10) === n);
+    });
+  }
+
+  function jumpTo(i) {
+    var el = $("#ch" + i);
+    if (!el) return;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - 8;
+    window.scrollTo({ top: top, behavior: "smooth" });
+    state.chapter = i;
+    updateNav();
+  }
+
+  /* ================= 보관함 ================= */
+  function readVault() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || "[]"); } catch (e) { return []; }
+  }
+  function writeVault(list) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(list)); return true; }
+    catch (e) { toast("이 화면에선 저장이 막혀 있다 · Safari로 열면 저장된다"); return false; }
+  }
+  function stripInput(inp) {
+    return {
+      name: inp.name, calendar: inp.calendar, leap: inp.leap,
+      y: inp.y, m: inp.m, d: inp.d, hourBranch: inp.hourBranch,
+      gender: inp.gender, mbti: inp.mbti, qcat: inp.qcat, qtext: inp.qtext
+    };
+  }
+  function saveCurrent() {
+    if (!state.input) return;
+    var list = readVault();
+    var s = state.saju;
+    var rec = {
+      id: "s" + Date.now().toString(36),
+      at: todayISO(),
+      label: s.input.name || "이름 없음",
+      summary: s.ganjiText.year + "·" + s.ganjiText.month + "·" + s.ganjiText.day + (s.pillars.hour ? "·" + s.ganjiText.hour : ""),
+      solar: s.solar,
+      input: stripInput(state.input)
+    };
+    list.unshift(rec);
+    if (list.length > 60) list = list.slice(0, 60);
+    if (writeVault(list)) {
+      state.savedId = rec.id;
+      toast("보관함에 넣었다 · " + rec.label);
+    }
+  }
+  function openVault() {
+    var list = readVault();
+    var ul = $("#vaultList");
+    if (!list.length) {
+      ul.innerHTML = '<li class="vault-empty">아직 아무것도 없다.<br>팔자를 본 다음에 저장해라.</li>';
+    } else {
+      ul.innerHTML = list.map(function (r) {
+        return '<li class="vault-item" data-id="' + r.id + '">' +
+          '<div class="vi-main"><div class="vi-name">' + esc(r.label) + '</div>' +
+          '<div class="vi-meta">' + esc(r.summary) + " · " + esc(r.at) + "</div></div>" +
+          '<button class="vi-del" data-del="' + r.id + '">지우기</button></li>';
+      }).join("");
+    }
+    openSheet("#vaultSheet");
+  }
+
+  /* ================= 시트 ================= */
+  var openSheetEl = null;
+  function openSheet(sel) {
+    closeSheets();
+    openSheetEl = $(sel);
+    openSheetEl.classList.add("on");
+    $("#scrim").classList.add("on");
+    document.body.style.overflow = "hidden";
+  }
+  function closeSheets() {
+    $$(".sheet").forEach(function (s) { s.classList.remove("on"); });
+    $("#scrim").classList.remove("on");
+    document.body.style.overflow = "";
+    openSheetEl = null;
+  }
+
+  /* ================= 이벤트 ================= */
+  function bindEvents() {
+    $("#enterBtn").addEventListener("click", function () {
+      $("#gate").classList.add("gone");
+      setTimeout(function () { $("#gate").classList.add("hidden"); }, 600);
+    });
+
+    wireSeg("#segCal", function (v) {
+      form.cal = v;
+      $("#segLeap").classList.toggle("hidden", v !== "lunar");
+      $("#fDay").placeholder = v === "lunar" ? "일" : "일";
+      $("#fYear").closest(".field").querySelector(".opt").textContent = v === "lunar" ? "(1900 ~ 2050 · 윤달은 따로)" : "(1900 ~ 2050)";
+      $("#dateErr").classList.add("hidden");
+    });
+    wireSeg("#segLeap", function (v) { form.leap = v; });
+    wireSeg("#segGender", function (v) { form.gender = v; });
+
+    wireChips("#hourChips", "hour", function (v) {
+      form.hour = v === "none" ? null : parseInt(v, 10);
+      $("#hourHint").textContent = form.hour === null
+        ? "시주 없이 여섯 글자로 본다. 대신 속마음은 조금 덜 보인다."
+        : (form.hour === 0
+          ? "자시는 밤 11시에 일주가 다음 날로 넘어간다. 23시 이전에 태어났다면 앞 날짜로 넣어라."
+          : SAJU.BRANCH_KO[form.hour] + "시는 " + SAJU.BRANCH_HOUR[form.hour] + "다. 이 시진의 기운으로 본다.");
+    });
+    wireChips("#mbtiChips", "mbti", function (v) { form.mbti = v || ""; });
+    wireChips("#qChips", "q", function (v) { form.qcat = v || "self"; });
+
+    var formEl = $("#sajuForm");
+    formEl.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = readForm();
+      if (!input) return;
+      renderReport(input);
+    });
+    // 숫자 입력 자동 이동
+    ["#fYear", "#fMonth", "#fDay"].forEach(function (sel, idx) {
+      $(sel).addEventListener("input", function () {
+        this.value = this.value.replace(/[^0-9]/g, "").slice(0, 4);
+        if (idx < 2 && this.value.length >= (idx === 0 ? 4 : 2)) {
+          var next = ["#fMonth", "#fDay", null][idx];
+          if (next) $(next).focus();
+        }
+      });
+    });
+
+    /* 보고서 내비 */
+    $("#navToc").addEventListener("click", function () { openSheet("#tocSheet"); });
+    $("#navPrev").addEventListener("click", function () { if (state.chapter > 0) jumpTo(state.chapter - 1); });
+    $("#navNext").addEventListener("click", function () { if (state.chapter < 4) jumpTo(state.chapter + 1); });
+    $("#navSave").addEventListener("click", saveCurrent);
+
+    $("#tocList").addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-jump]"); if (!b) return;
+      var i = parseInt(b.dataset.jump, 10);
+      closeSheets();
+      setTimeout(function () { jumpTo(i); }, 220);
+    });
+    $("#tocVault").addEventListener("click", function () { openVault(); });
+    $("#tocNew").addEventListener("click", function (e) {
+      var btn = e.currentTarget;
+      if (btn.dataset.armed === "1") {
+        formSavedReset();
+      } else {
+        btn.dataset.armed = "1";
+        btn.textContent = "한 번 더 누르면 새로 시작";
+        btn.classList.add("on");
+        setTimeout(function () {
+          if (btn.dataset.armed === "1") { btn.dataset.armed = ""; btn.textContent = "↺ 새로 보기"; btn.classList.remove("on"); }
+        }, 4000);
+      }
+    });
+
+    $("#endCard").addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-act]"); if (!b) return;
+      if (b.dataset.act === "save") { saveCurrent(); b.textContent = "❖ 저장됨"; }
+      if (b.dataset.act === "vault") openVault();
+      if (b.dataset.act === "new") formSavedReset();
+    });
+
+    $("#vaultList").addEventListener("click", function (e) {
+      var del = e.target.closest("[data-del]");
+      if (del) {
+        var id = del.dataset.del;
+        var list = readVault().filter(function (r) { return r.id !== id; });
+        writeVault(list);
+        openVault();
+        toast("지웠다");
+        return;
+      }
+      var item = e.target.closest(".vault-item");
+      if (!item) return;
+      var rec = readVault().filter(function (r) { return r.id === item.dataset.id; })[0];
+      if (!rec) return;
+      closeSheets();
+      var input = rec.input;
+      input.now = new Date();
+      renderReport(input);
+      setTimeout(function () { toast(rec.label + "의 팔자를 다시 폈다"); }, 300);
+    });
+
+    $("#scrim").addEventListener("click", closeSheets);
+
+    window.addEventListener("scroll", function () {
+      // 스크롤 스파이 백업
+      if ($("#report").classList.contains("hidden")) return;
+    }, { passive: true });
+  }
+
+  function formSavedReset() {
+    closeSheets();
+    // 폼으로 돌아가기 — 입력은 그대로 두고 새로 볼 수 있게
+    $("#report").classList.add("hidden");
+    $("#nav").classList.add("hidden");
+    $("#formScreen").classList.remove("hidden");
+    state.input = null; state.saju = null;
+    window.scrollTo(0, 0);
+  }
+
+  /* ================= 시작 ================= */
+  buildChips();
+  bindEvents();
+})();
+
+</script>
+</body>
+</html>
